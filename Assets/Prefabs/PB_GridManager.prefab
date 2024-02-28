@@ -47,5 +47,6 @@ MonoBehaviour:
   m_Width: 17
   m_Height: 13
   m_tile: {fileID: 8660550641050735860, guid: 3c4d4428b35b8354faaf62284b01f624, type: 3}
+  m_TileSprite: {fileID: 21300000, guid: 5e1850730d5f36c49894d93419c7b43b, type: 3}
   m_wallSprite: {fileID: 21300000, guid: 7f22e08e9b8c85b499f0298ef5032b6a, type: 3}
   m_destructableWallSprite: {fileID: 21300000, guid: 57ea1aa22df1f46429ed2256d19152bf, type: 3}

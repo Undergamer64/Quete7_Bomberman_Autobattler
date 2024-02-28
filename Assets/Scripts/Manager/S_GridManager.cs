@@ -12,6 +12,7 @@ public class S_GridManager : MonoBehaviour
     [SerializeField] private S_Tile m_tile;
 
     [Header("Differents tile's types :")]
+    [SerializeField] private Sprite m_TileSprite;
     [SerializeField] private Sprite m_wallSprite;
     [SerializeField] private Sprite m_destructableWallSprite;
 
@@ -43,15 +44,39 @@ public class S_GridManager : MonoBehaviour
                 var spawnedTile = Instantiate(m_tile, new Vector3(x, y), Quaternion.identity, transform);
                 m_GridList[x].Add(spawnedTile);
 
+                //Placement of Destructable Walls
+                if ((x % 2 == 0) || (y % 2 == 0))
+                {
+                    spawnedTile.tag = "Destructable";
+                    spawnedTile.GetComponent<SpriteRenderer>().sprite = m_destructableWallSprite;
+                }
+
+                //Placement of the Walls :
+                //edge
                 if (x == 0 || x == 16 || y == 12 || y == 0)
                 {
                     spawnedTile.tag = "Wall";
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = m_wallSprite;
-                    spawnedTile.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.35f);
+                }
+                //grid Wall
+                if ((x >= 2 && y >= 2) && (x <= 14 && y <= 10))
+                {
+                    if ((x % 2 == 0) && (y % 2 == 0)) 
+                    {
+                        spawnedTile.tag = "Wall";
+                        spawnedTile.GetComponent<SpriteRenderer>().sprite = m_wallSprite;
+                    }
                 }
 
-
-
+                //Replace Destructable Walls on spawn
+                if ((x == 1 && (y == 2 || y == 10)) ||
+                    (x == 2 && (y == 1 || y == 11)) ||
+                    (x == 14 && (y == 1 || y == 11)) ||
+                    (x == 15 && (y == 2 || y == 10))) 
+                {
+                    spawnedTile.tag = "Untagged";
+                    spawnedTile.GetComponent<SpriteRenderer>().sprite = m_TileSprite;
+                }
 
                 spawnedTile.m_TileX = x;
                 spawnedTile.m_TileY = y;
@@ -59,5 +84,7 @@ public class S_GridManager : MonoBehaviour
                 m_tilesDictionary[new Vector2(x, y)] = spawnedTile;
             }
         }
+        Camera.main.transform.position = new Vector3(m_Width / 2, m_Height / 2, -10);
+        Camera.main.orthographicSize = 7;
     }
 }
