@@ -80,7 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381df85a272988e4a8f2b27351f43d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: c1e5509e61feac141a205f46ea9451d9, type: 2}
+  m_stats: {fileID: 11400000, guid: c1e5509e61feac141a205f46ea9451d9, type: 2}
+  m_bombPrefab: {fileID: 9024942245421119764, guid: a6826b15ed5678a48a05c9e181cbb2c2, type: 3}
+  m_NbOfBombs: 0
   m_currentTile: {fileID: 0}
 --- !u!212 &2591737880180696570
 SpriteRenderer:
@@ -179,7 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381df85a272988e4a8f2b27351f43d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: c1e5509e61feac141a205f46ea9451d9, type: 2}
+  m_stats: {fileID: 11400000, guid: c1e5509e61feac141a205f46ea9451d9, type: 2}
+  m_bombPrefab: {fileID: 9024942245421119764, guid: a6826b15ed5678a48a05c9e181cbb2c2, type: 3}
+  m_NbOfBombs: 0
   m_currentTile: {fileID: 0}
 --- !u!212 &3629529545750238046
 SpriteRenderer:
@@ -278,7 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381df85a272988e4a8f2b27351f43d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: c1e5509e61feac141a205f46ea9451d9, type: 2}
+  m_stats: {fileID: 11400000, guid: c1e5509e61feac141a205f46ea9451d9, type: 2}
+  m_bombPrefab: {fileID: 9024942245421119764, guid: a6826b15ed5678a48a05c9e181cbb2c2, type: 3}
+  m_NbOfBombs: 0
   m_currentTile: {fileID: 0}
 --- !u!212 &5556546917594509109
 SpriteRenderer:
@@ -377,7 +383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381df85a272988e4a8f2b27351f43d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: c1e5509e61feac141a205f46ea9451d9, type: 2}
+  m_stats: {fileID: 11400000, guid: c1e5509e61feac141a205f46ea9451d9, type: 2}
+  m_bombPrefab: {fileID: 9024942245421119764, guid: a6826b15ed5678a48a05c9e181cbb2c2, type: 3}
+  m_NbOfBombs: 0
   m_currentTile: {fileID: 0}
 --- !u!212 &5783337987409482146
 SpriteRenderer:

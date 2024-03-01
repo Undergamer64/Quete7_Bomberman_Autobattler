@@ -5,9 +5,18 @@ using UnityEngine;
 public class S_Character : MonoBehaviour
 {
     [SerializeField]
-    private S_CharacterStats stats;
-    
+    private S_CharacterStats m_stats;
+
+    [SerializeField]
+    private GameObject m_bombPrefab;
+
+    public int m_NbOfBombs = 1;
     public S_Tile m_currentTile;
+
+    private void Start()
+    {
+        m_NbOfBombs = m_stats.m_nbTraps;
+    }
 
     public bool MoveToTile(S_Tile tile)
     {
@@ -43,5 +52,19 @@ public class S_Character : MonoBehaviour
     public void MoveRight()
     {
         MoveToTile(S_GridManager.Instance.m_GridList[m_currentTile.m_TileX + 1][m_currentTile.m_TileY]);
+    }
+
+    public void PlaceBomb()
+    {
+        if (!m_currentTile.m_Bomb && m_NbOfBombs > 0)
+        {
+            m_NbOfBombs -= 1;
+            GameObject bomb = Instantiate(m_bombPrefab, transform.position, Quaternion.identity);
+            bomb.GetComponent<S_Bomb>().m_Range = m_stats.m_Range;
+            bomb.GetComponent<S_Bomb>().m_MaxPerforation = m_stats.m_Perforation;
+            bomb.GetComponent<S_Bomb>().m_Tile = m_currentTile;
+            bomb.GetComponent<S_Bomb>().m_Character = this;
+            m_currentTile.m_Bomb = bomb.GetComponent<S_Bomb>();
+        }
     }
 }

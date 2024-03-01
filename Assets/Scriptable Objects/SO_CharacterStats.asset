@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Lives: 3
   m_Speed: 1
-  m_nbTraps: 0
-  m_Range: 1
-  m_Perforation: 1
+  m_nbTraps: 1
+  m_Range: 4
+  m_Perforation: 2
   m_CanMoveTraps: 0

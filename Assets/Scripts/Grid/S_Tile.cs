@@ -8,10 +8,11 @@ public class S_Tile : MonoBehaviour
     public int m_TileY;
 
     public S_Character m_Character;
+    public S_Bomb m_Bomb;
 
     public bool CanReach(S_Tile tile)
     {
-        if (!tile.m_Character)
+        if (!tile.m_Character && !tile.m_Bomb)
         {
             var GridList = S_GridManager.Instance.m_GridList;
 
