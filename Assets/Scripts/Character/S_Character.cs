@@ -9,6 +9,9 @@ public class S_Character : MonoBehaviour
     private S_CharacterStats m_stats;
 
     [SerializeField]
+    private GameObject m_playerList;
+
+    [SerializeField]
     private GameObject m_bombPrefab;
 
     public int m_NbOfBombs = 1;
