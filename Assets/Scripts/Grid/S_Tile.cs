@@ -48,6 +48,7 @@ public class S_Tile : MonoBehaviour
         {
             case "Untagged":
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = S_GridManager.Instance.m_TileSprite;
+                m_IsWalkable = true;
                 break;
             case "Wall":
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = S_GridManager.Instance.m_WallSprite;
