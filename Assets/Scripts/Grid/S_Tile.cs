@@ -7,6 +7,11 @@ public class S_Tile : MonoBehaviour
 
     public S_Character m_Character;
     public S_Bomb m_Bomb;
+    public int m_GCost;
+    public int m_HCost;
+    public int m_FCost;
+    public bool m_IsWalkable=true;
+    public S_Tile m_PreviousNode;
 
     public bool CanReach(S_Tile tile)
     {
@@ -54,5 +59,10 @@ public class S_Tile : MonoBehaviour
                 throw new System.ArgumentException("Tag provided is invalid");
         }
         this.gameObject.tag = tag;
+    }
+
+    public void CalculateFCost() 
+    {
+        m_FCost = m_GCost + m_HCost;
     }
 }

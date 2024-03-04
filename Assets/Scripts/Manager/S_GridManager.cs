@@ -49,6 +49,7 @@ public class S_GridManager : MonoBehaviour
                 if ((x % 2 == 0) || (y % 2 == 0))
                 {
                     spawnedTile.tag = "Destructable";
+                    spawnedTile.m_IsWalkable = false;
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = m_DestructableWallSprite;
                 }
 
@@ -57,6 +58,7 @@ public class S_GridManager : MonoBehaviour
                 if (x == 0 || x == 16 || y == 12 || y == 0)
                 {
                     spawnedTile.tag = "Wall";
+                    spawnedTile.m_IsWalkable = false;
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = m_WallSprite;
                 }
                 //grid Wall
@@ -65,6 +67,7 @@ public class S_GridManager : MonoBehaviour
                     if ((x % 2 == 0) && (y % 2 == 0)) 
                     {
                         spawnedTile.tag = "Wall";
+                        spawnedTile.m_IsWalkable = false;
                         spawnedTile.GetComponent<SpriteRenderer>().sprite = m_WallSprite;
                     }
                 }
@@ -76,6 +79,7 @@ public class S_GridManager : MonoBehaviour
                     (x == 15 && (y == 2 || y == 10))) 
                 {
                     spawnedTile.tag = "Untagged";
+                    spawnedTile.m_IsWalkable = true;
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = m_TileSprite;
                 }
 
