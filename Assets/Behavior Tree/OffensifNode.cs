@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using BehaviorTree;
 using UnityEngine;
 
-public class DefensifNode : Node
+public class OffesifNode : Node
 {
-    public DefensifNode() : base() { }
-    public DefensifNode(List<Node> children) : base(children) { }
+    public OffesifNode() : base() { }
+    public OffesifNode(List<Node> children) : base(children) { }
 
 
     public override NodeState Evaluate()
