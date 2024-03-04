@@ -2,16 +2,17 @@ using System.Collections.Generic;
 using BehaviorTree;
 using UnityEngine;
 
-public class DefensifNode : Node
+public class NeutralNode : Node
 {
-    public DefensifNode() : base() { }
-    public DefensifNode(List<Node> children) : base(children) { }
+    public NeutralNode() : base() { }
+    public NeutralNode(List<Node> children) : base(children) { }
 
 
     public override NodeState Evaluate()
     {
         //code for the behavior here
         state = NodeState.FAILURE;
+
 
         //Debug.Log($"{this} : {state}");
         return state;

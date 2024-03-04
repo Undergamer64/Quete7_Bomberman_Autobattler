@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class S_Bomb : MonoBehaviour
@@ -9,7 +10,9 @@ public class S_Bomb : MonoBehaviour
     public int m_Perforation;
     public int m_MaxPerforation;
     private bool m_encounterObstacle = false;
-    [SerializeField] private GameObject m_PrefabExplosion;
+    
+    [SerializeField] 
+    private GameObject m_PrefabExplosion;
 
     public S_Character m_Character;
 

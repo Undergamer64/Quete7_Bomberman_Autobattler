@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class S_Character : MonoBehaviour
 {
+    [SerializeField] 
+    private GameObject m_listOfBombs;
+
     [SerializeField]
     private S_CharacterStats m_stats;
 
@@ -57,7 +60,7 @@ public class S_Character : MonoBehaviour
         if (!m_currentTile.m_Bomb && m_NbOfBombs > 0)
         {
             m_NbOfBombs -= 1;
-            GameObject bomb = Instantiate(m_bombPrefab, transform.position, Quaternion.identity);
+            GameObject bomb = Instantiate(m_bombPrefab, transform.position, Quaternion.identity, m_listOfBombs.transform);
             bomb.GetComponent<S_Bomb>().m_Range = m_stats.m_Range;
             bomb.GetComponent<S_Bomb>().m_MaxPerforation = m_stats.m_Perforation;
             bomb.GetComponent<S_Bomb>().m_Tile = m_currentTile;
