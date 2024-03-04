@@ -11,7 +11,7 @@ public class S_Tile : MonoBehaviour
     public int m_HCost;
     public int m_FCost;
     public bool m_IsWalkable=true;
-    public S_Tile m_PreviousNode;
+    public S_Tile m_PreviousTile;
 
     public bool CanReach(S_Tile tile)
     {

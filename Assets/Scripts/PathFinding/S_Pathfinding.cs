@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,10 +15,10 @@ public class Pathfinding
         { 
             for (int j = 0; j < S_GridManager.Instance.m_Height; j++)
             {
-                S_Tile tile = S_GridManager.Instance.m_GridList[i][j];
+                S_Tile tile = m_gridRef[i][j];
                 tile.m_GCost = int.MaxValue;
                 tile.CalculateFCost();
-                tile.m_PreviousNode = null;
+                tile.m_PreviousTile = null;
 
             }
         }
@@ -48,7 +47,7 @@ public class Pathfinding
                 int tentativeGCost= CalculateDistance(currentTile, tile);
                 if (tentativeGCost < tile.m_GCost)
                 {
-                    tile.m_PreviousNode=currentTile;
+                    tile.m_PreviousTile=currentTile;
                     tile.m_GCost=tentativeGCost;
                     tile.m_HCost=CalculateDistance(tile,endTile);
                     tile.CalculateFCost();
@@ -72,22 +71,22 @@ public class Pathfinding
         //Left
         if(tile.m_TileX-1>=0)
         {
-            neighbourList.Add(S_GridManager.Instance.m_GridList[tile.m_TileX - 1][tile.m_TileY]);
+            neighbourList.Add(m_gridRef[tile.m_TileX - 1][tile.m_TileY]);
         }
         //Down
         if(tile.m_TileY-1>=0)
         {
-            neighbourList.Add(S_GridManager.Instance.m_GridList[tile.m_TileX][tile.m_TileY - 1]);
+            neighbourList.Add(m_gridRef[tile.m_TileX][tile.m_TileY - 1]);
         }
         //Right
         if(tile.m_TileX+1< S_GridManager.Instance.m_Width)
         {
-            neighbourList.Add(S_GridManager.Instance.m_GridList[tile.m_TileX + 1][tile.m_TileY]);
+            neighbourList.Add(m_gridRef[tile.m_TileX + 1][tile.m_TileY]);
         }
         //Up
         if (tile.m_TileY + 1 < S_GridManager.Instance.m_Height)
         {
-            neighbourList.Add(S_GridManager.Instance.m_GridList[tile.m_TileX][tile.m_TileY + 1]);
+            neighbourList.Add(m_gridRef[tile.m_TileX][tile.m_TileY + 1]);
         }
         return neighbourList;
     }
@@ -96,15 +95,15 @@ public class Pathfinding
         List<S_Tile> path= new List<S_Tile>();
         path.Add(endTile);
         S_Tile currentTile = endTile;
-        while(currentTile.m_PreviousNode!=null) 
+        while(currentTile.m_PreviousTile!=null) 
         {
-            path.Add(currentTile.m_PreviousNode);
-            currentTile = currentTile.m_PreviousNode;
+            path.Add(currentTile.m_PreviousTile);
+            currentTile = currentTile.m_PreviousTile;
         }
         path.Reverse();
         return path;
     }
-    private int CalculateDistance(S_Tile a, S_Tile b)
+    public int CalculateDistance(S_Tile a, S_Tile b)
     {
         int XDistance= Mathf.Abs(a.m_TileX - b.m_TileX);
         int YDistance= Mathf.Abs(a.m_TileY - b.m_TileY);
