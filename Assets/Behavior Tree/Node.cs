@@ -1,9 +1,4 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
-using UnityEngine.XR;
 
 namespace BehaviorTree
 {
@@ -30,14 +25,15 @@ namespace BehaviorTree
         {
             foreach (Node node in children)
             {
-                _Attach(child);
-            }
-            private void _Attach(Node node)
-            {
-                node.parent = this;
-                children.Add(node);
+                _Attach(node);
             }
         }
+        private void _Attach(Node node)
+        {
+            node.parent = this;
+            children.Add(node);
+        }
+
         public virtual NodeState Evaluate() => NodeState.FAILURE;
 
         public object GetData(string key)
