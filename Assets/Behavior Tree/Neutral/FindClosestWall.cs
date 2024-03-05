@@ -15,20 +15,31 @@ public class FindClosestWall : Node
         m_gridManager = gridRef;
         m_pathfinding = pathfindingRef;
         m_character = charRef;
+        
     }
 
 
     public override NodeState Evaluate()
-    {/*
+    {
         //code for the check here
         for (int i = 0; i < m_gridManager.transform.childCount; i++)
         {
-            if (m_gridManager.transform.GetChild(i).CompareTag("Wall"))
+            if (m_gridManager.transform.GetChild(i).CompareTag("Destructable"))
             {
                 dist.Add(m_gridManager.transform.GetChild(i).gameObject);
-                int potentialDistance=dist.OrderBy(x=>m_pathfinding.CalculateDistance(x.GetComponent<S_Tile>(),m_character.GetComponent<S_Character>().m_currentTile)))
             }
-        }*/
+        }
+        dist.OrderBy(x => m_pathfinding.CalculateDistance(x.GetComponent<S_Tile>(), m_character.GetComponent<S_Character>().m_currentTile));
+        List<S_Tile> path;
+        foreach (GameObject wall in dist)
+        {
+            path= m_pathfinding.FindPath(m_character.GetComponent<S_Character>().m_currentTile, wall.GetComponent<S_Tile>());
+            if (path != null)
+            {
+                break;
+            }
+        }
+
         state = NodeState.FAILURE;
         return state;
     }

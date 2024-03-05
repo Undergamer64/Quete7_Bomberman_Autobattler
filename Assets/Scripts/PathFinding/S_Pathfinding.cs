@@ -42,6 +42,10 @@ public class Pathfinding
                 if (m_closedList.Contains(tile)) continue;
                 if (!tile.m_IsWalkable)
                 {
+                    if (tile == endTile)
+                    {
+                        return CalculatePath(endTile);
+                    }
                     m_closedList.Add(tile);
                     continue;
                 }
