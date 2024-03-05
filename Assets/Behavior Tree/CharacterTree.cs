@@ -16,7 +16,7 @@ public class CharacterTree : BehaviorTree.Tree
         {
             new Sequence(new List<Node> 
                 {
-                new CheckExplosionNode(m_ListOfBombs), 
+                new CheckExplosionNode(m_ListOfBombs, m_Character), 
                 new DefensifNode()
                 }
             ),
