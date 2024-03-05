@@ -44,7 +44,8 @@ public class Pathfinding
                 {
                     if (tile == endTile)
                     {
-                        return CalculatePath(endTile);
+                        tile.m_PreviousTile = currentTile;
+                        return CalculatePath(tile);
                     }
                     m_closedList.Add(tile);
                     continue;
@@ -106,6 +107,7 @@ public class Pathfinding
             path.Add(currentTile.m_PreviousTile);
             currentTile = currentTile.m_PreviousTile;
         }
+        path.Remove(path[path.Count-1]);
         path.Reverse();
         return path;
     }
