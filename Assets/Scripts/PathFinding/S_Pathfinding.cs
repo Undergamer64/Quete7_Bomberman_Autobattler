@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pathfinding
 {
+
     private const int MOVE_STRAIGHT_COST = 10;
     private List<S_Tile> m_openList;
     private List<S_Tile> m_closedList;
@@ -40,6 +42,10 @@ public class Pathfinding
                 if (m_closedList.Contains(tile)) continue;
                 if (!tile.m_IsWalkable)
                 {
+                    if (tile == endTile)
+                    {
+                        return CalculatePath(endTile);
+                    }
                     m_closedList.Add(tile);
                     continue;
                 }
