@@ -32,7 +32,8 @@ public class CharacterTree : BehaviorTree.Tree
                 {
                     new Sequence(new List<Node>
                     {
-                        new Node()
+                        new IsWallClose(m_Character),
+                        new PlaceBomb(m_Character)
                     }),
                     new Sequence(new List<Node>
                     {
