@@ -6,6 +6,7 @@ public class CheckExplosionNode : Node
 {
     private GameObject m_listOfBombs;
     private GameObject m_character;
+    private List<S_Tile> m_dangerousPlaces = new List<S_Tile>();
 
     public CheckExplosionNode(GameObject ListOfBombs, GameObject Character)
     {
@@ -21,6 +22,7 @@ public class CheckExplosionNode : Node
         }
         else
         {
+            parent.parent.SetData("DangerousPlaces", m_dangerousPlaces);
             state = NodeState.SUCCESS;
         }
         return state;
@@ -28,7 +30,7 @@ public class CheckExplosionNode : Node
 
     private bool IsSafe()
     {
-        List<S_Tile> DangerTiles = new List<S_Tile>();
+        List<S_Tile> m_dangerousPlaces = new List<S_Tile>();
         for (int i = 0; i < m_listOfBombs.transform.childCount; i++)
         {
             GameObject currentChild = m_listOfBombs.transform.GetChild(i).gameObject;
@@ -47,9 +49,9 @@ public class CheckExplosionNode : Node
                 {
                     break;
                 }
-                if (!DangerTiles.Contains(currentTile))
+                if (!m_dangerousPlaces.Contains(currentTile))
                 {
-                    DangerTiles.Add(currentTile);
+                    m_dangerousPlaces.Add(currentTile);
                 }
             }
             encounterObstacle = false;
@@ -66,9 +68,9 @@ public class CheckExplosionNode : Node
                 {
                     break;
                 }
-                if (!DangerTiles.Contains(currentTile))
+                if (!m_dangerousPlaces.Contains(currentTile))
                 {
-                    DangerTiles.Add(currentTile);
+                    m_dangerousPlaces.Add(currentTile);
                 }
             }
             encounterObstacle = false;
@@ -85,9 +87,9 @@ public class CheckExplosionNode : Node
                 {
                     break;
                 }
-                if (!DangerTiles.Contains(currentTile))
+                if (!m_dangerousPlaces.Contains(currentTile))
                 {
-                    DangerTiles.Add(currentTile);
+                    m_dangerousPlaces.Add(currentTile);
                 }
             }
             encounterObstacle = false;
@@ -104,13 +106,13 @@ public class CheckExplosionNode : Node
                 {
                     break;
                 }
-                if (!DangerTiles.Contains(currentTile))
+                if (!m_dangerousPlaces.Contains(currentTile))
                 {
-                    DangerTiles.Add(currentTile);
+                    m_dangerousPlaces.Add(currentTile);
                 }
             }
         }
-        return !DangerTiles.Contains(m_character.GetComponent<S_Character>().m_currentTile);
+        return !m_dangerousPlaces.Contains(m_character.GetComponent<S_Character>().m_currentTile);
     }
 
 }
