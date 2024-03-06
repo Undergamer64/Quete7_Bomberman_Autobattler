@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
+
 public class MoveTo : Node
 {
     private GameObject m_character;
@@ -11,8 +12,6 @@ public class MoveTo : Node
     {
         m_character = charRef;
     }
-
-    
     public override NodeState Evaluate()
     {
         List<S_Tile> path = (List<S_Tile>)GetData("path");
@@ -20,11 +19,7 @@ public class MoveTo : Node
         {
             state = NodeState.SUCCESS;
         }
-
         state = NodeState.FAILURE;
-        Debug.Log("debut");
-        new WaitForSeconds(10f);
-        Debug.Log("fin");
         return state;
     }
 }
