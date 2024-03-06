@@ -15,9 +15,12 @@ public class MoveTo : Node
     public override NodeState Evaluate()
     {
         List<S_Tile> path = (List<S_Tile>)GetData("path");
-        if (m_character.GetComponent<S_Character>().MoveToTile(path[0]))
+        if (path.Count != 0)
         {
-            state = NodeState.SUCCESS;
+            if (m_character.GetComponent<S_Character>().MoveToTile(path[0]))
+            {
+                state = NodeState.SUCCESS;
+            }
         }
         state = NodeState.FAILURE;
         return state;
