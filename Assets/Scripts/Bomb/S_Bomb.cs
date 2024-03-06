@@ -152,6 +152,7 @@ public class S_Bomb : MonoBehaviour
                 break;
             }
         }
+        m_Tile.m_IsWalkable = true;
         m_Character.m_NbOfBombs += 1;
         Destroy(gameObject);
     }

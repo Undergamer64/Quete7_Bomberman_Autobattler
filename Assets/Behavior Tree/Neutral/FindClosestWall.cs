@@ -30,7 +30,6 @@ public class FindClosestWall : Node
             }
         }
         dist.OrderBy(x => m_pathfinding.CalculateDistance(x.GetComponent<S_Tile>(), m_character.GetComponent<S_Character>().m_currentTile));
-        Debug.Log(dist.Count);
         List<S_Tile> path = null;
         foreach (GameObject wall in dist)
         {
