@@ -23,7 +23,7 @@ public class MoveTo : Node
 
         state = NodeState.FAILURE;
         Debug.Log("debut");
-        new WaitForSeconds(0.5f);
+        new WaitForSeconds(10f);
         Debug.Log("fin");
         return state;
     }

@@ -71,7 +71,7 @@ public class Pathfinding
 
     }
 
-    private List<S_Tile> GetNeighbourTile(S_Tile tile)
+    public List<S_Tile> GetNeighbourTile(S_Tile tile)
     {
         List<S_Tile> neighbourList= new List<S_Tile>();
 

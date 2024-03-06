@@ -638,6 +638,7 @@ MonoBehaviour:
   m_ListOfBombs: {fileID: 1701116108}
   m_GridManager: {fileID: 1688959785}
   m_Character: {fileID: 1545922800}
+  m_Path: []
 --- !u!1 &1688959785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2402026923276551410, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
