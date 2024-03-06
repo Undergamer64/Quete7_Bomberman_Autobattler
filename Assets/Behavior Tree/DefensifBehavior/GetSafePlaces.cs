@@ -18,7 +18,7 @@ public class GetSafePlaces : Node
     {
         state = NodeState.FAILURE;
 
-        List<S_Tile> DangerousPlaces = (List<S_Tile>)GetData("DangerousPlaces");
+        List<S_Tile> DangerousPlaces = S_GridManager.Instance.m_DangerousTiles;
         List<S_Tile> SafePlaces = new List<S_Tile>();
 
         for (int i = 0; i < S_GridManager.Instance.m_Width; i++)

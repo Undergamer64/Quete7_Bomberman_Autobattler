@@ -6,7 +6,8 @@ public class S_GridManager : MonoBehaviour
     public static S_GridManager Instance;
 
     public List<List<S_Tile>> m_GridList = new();
-    public List<S_Tile> m_DangerousTiles=new();
+    public List<S_Tile> m_DangerousTiles = new();
+    public GameObject m_ListOfBombs;
 
     public int m_Width, m_Height;
     [SerializeField] private S_Tile m_tile;
@@ -113,5 +114,91 @@ public class S_GridManager : MonoBehaviour
 
         Camera.main.transform.position = new Vector3(m_Width / 2, m_Height / 2, -10);
         Camera.main.orthographicSize = 7;
+    }
+
+    public void UpdateDanger()
+    {
+        List<S_Tile> m_DangerousTiles = new List<S_Tile>();
+        for (int i = 0; i < m_ListOfBombs.transform.childCount; i++)
+        {
+            GameObject currentChild = m_ListOfBombs.transform.GetChild(i).gameObject;
+
+            bool encounterObstacle = false;
+            int range = 0;
+            for (int j = 0; j <= currentChild.GetComponent<S_Bomb>().m_Range; j++)
+            {
+                range = j;
+                S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Bomb>().m_Tile.m_TileX + j][currentChild.GetComponent<S_Bomb>().m_Tile.m_TileY];
+                if (!currentChild.CompareTag("Untagged"))
+                {
+                    encounterObstacle = true;
+                }
+                if (encounterObstacle)
+                {
+                    break;
+                }
+                if (!m_DangerousTiles.Contains(currentTile))
+                {
+                    m_DangerousTiles.Add(currentTile);
+                }
+            }
+            encounterObstacle = false;
+            range = 0;
+            for (int j = 0; j <= currentChild.GetComponent<S_Bomb>().m_Range; j++)
+            {
+                range = j;
+                S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Bomb>().m_Tile.m_TileX - j][currentChild.GetComponent<S_Bomb>().m_Tile.m_TileY];
+                if (!currentChild.CompareTag("Untagged"))
+                {
+                    encounterObstacle = true;
+                }
+                if (encounterObstacle)
+                {
+                    break;
+                }
+                if (!m_DangerousTiles.Contains(currentTile))
+                {
+                    m_DangerousTiles.Add(currentTile);
+                }
+            }
+            encounterObstacle = false;
+            range = 0;
+            for (int j = 0; j <= currentChild.GetComponent<S_Bomb>().m_Range; j++)
+            {
+                range = j;
+                S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Bomb>().m_Tile.m_TileX][currentChild.GetComponent<S_Bomb>().m_Tile.m_TileY + j];
+                if (!currentChild.CompareTag("Untagged"))
+                {
+                    encounterObstacle = true;
+                }
+                if (encounterObstacle)
+                {
+                    break;
+                }
+                if (!m_DangerousTiles.Contains(currentTile))
+                {
+                    m_DangerousTiles.Add(currentTile);
+                }
+            }
+            encounterObstacle = false;
+            range = 0;
+            for (int j = 0; j <= currentChild.GetComponent<S_Bomb>().m_Range; j++)
+            {
+                range = j;
+                S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Bomb>().m_Tile.m_TileX][currentChild.GetComponent<S_Bomb>().m_Tile.m_TileY - j];
+                if (!currentChild.CompareTag("Untagged"))
+                {
+                    encounterObstacle = true;
+                }
+                if (encounterObstacle)
+                {
+                    break;
+                }
+                if (!m_DangerousTiles.Contains(currentTile))
+                {
+                    m_DangerousTiles.Add(currentTile);
+                }
+            }
+        }
     }
 }
