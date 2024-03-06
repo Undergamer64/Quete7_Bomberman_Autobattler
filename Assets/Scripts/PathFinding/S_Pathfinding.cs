@@ -52,6 +52,10 @@ public class Pathfinding
                 }
 
                 int tentativeGCost= CalculateDistance(currentTile, tile);
+                if (tile.m_MoveCost > 0)
+                {
+                    tentativeGCost += tile.m_MoveCost;
+                }
                 if (tentativeGCost < tile.m_GCost)
                 {
                     tile.m_PreviousTile=currentTile;
@@ -116,6 +120,7 @@ public class Pathfinding
         int XDistance= Mathf.Abs(a.m_TileX - b.m_TileX);
         int YDistance= Mathf.Abs(a.m_TileY - b.m_TileY);
         int result = Mathf.Abs(XDistance - YDistance);
+
         return MOVE_STRAIGHT_COST * result;
     }
     private S_Tile GetLowestFCost(List<S_Tile> tiles)

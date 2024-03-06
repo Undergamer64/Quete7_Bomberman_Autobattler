@@ -6,6 +6,7 @@ public class S_GridManager : MonoBehaviour
     public static S_GridManager Instance;
 
     public List<List<S_Tile>> m_GridList = new();
+    public List<S_Tile> m_DangerousTiles=new();
 
     public int m_Width, m_Height;
     [SerializeField] private S_Tile m_tile;
