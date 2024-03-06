@@ -44,7 +44,8 @@ public class Pathfinding
                 {
                     if (tile == endTile)
                     {
-                        return CalculatePath(endTile);
+                        tile.m_PreviousTile = currentTile;
+                        return CalculatePath(tile);
                     }
                     m_closedList.Add(tile);
                     continue;
@@ -70,7 +71,7 @@ public class Pathfinding
 
     }
 
-    private List<S_Tile> GetNeighbourTile(S_Tile tile)
+    public List<S_Tile> GetNeighbourTile(S_Tile tile)
     {
         List<S_Tile> neighbourList= new List<S_Tile>();
 
@@ -106,6 +107,7 @@ public class Pathfinding
             path.Add(currentTile.m_PreviousTile);
             currentTile = currentTile.m_PreviousTile;
         }
+        path.Remove(path[path.Count-1]);
         path.Reverse();
         return path;
     }

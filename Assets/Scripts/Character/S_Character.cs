@@ -58,7 +58,7 @@ public class S_Character : MonoBehaviour
         MoveToTile(S_GridManager.Instance.m_GridList[m_currentTile.m_TileX + 1][m_currentTile.m_TileY]);
     }
 
-    public void PlaceBomb()
+    public bool PlaceBomb()
     {
         if (!m_currentTile.m_Bomb && m_NbOfBombs > 0)
         {
@@ -69,6 +69,8 @@ public class S_Character : MonoBehaviour
             bomb.GetComponent<S_Bomb>().m_Tile = m_currentTile;
             bomb.GetComponent<S_Bomb>().m_Character = this;
             m_currentTile.m_Bomb = bomb.GetComponent<S_Bomb>();
+            return true;
         }
+        return false;
     }
 }

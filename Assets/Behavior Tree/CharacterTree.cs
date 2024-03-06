@@ -7,7 +7,6 @@ public class CharacterTree : BehaviorTree.Tree
     public GameObject m_ListOfBombs;
     public GameObject m_GridManager;
     public GameObject m_Character;
-    public Pathfinding m_Pathfinding;
     public List<S_Tile> m_Path;
 
     protected override Node SetupTree()
@@ -26,7 +25,20 @@ public class CharacterTree : BehaviorTree.Tree
                 new OffesifNode()
                 }
             ),
-            new NeutralNode()
+            //neutral
+            new Selector(
+                new List<Node>
+                {
+                    new Sequence(new List<Node>
+                    {
+                        new Node()
+                    }),
+                    new Sequence(new List<Node>
+                    {
+                        new FindClosestWall(m_GridManager,m_Character),
+                        new MoveTo(m_Character)
+                    })
+                })
         }
         );
 
