@@ -9,6 +9,9 @@ public class S_Character : MonoBehaviour
     private S_CharacterStats m_stats;
 
     [SerializeField]
+    private GameObject m_playerList;
+
+    [SerializeField]
     private GameObject m_bombPrefab;
 
     public int m_NbOfBombs = 1;
@@ -26,7 +29,9 @@ public class S_Character : MonoBehaviour
             if (!tile.gameObject.CompareTag("Wall") && !tile.gameObject.CompareTag("Destructable") && !tile.m_Character)
             {
                 m_currentTile.m_Character = null;
+                m_currentTile.m_IsWalkable = true;
                 m_currentTile = tile;
+                m_currentTile.m_IsWalkable = false;
                 m_currentTile.m_Character = this;
                 transform.position = new Vector3( m_currentTile.m_TileX, m_currentTile.m_TileY, -1);
                 return true;
@@ -55,7 +60,7 @@ public class S_Character : MonoBehaviour
         MoveToTile(S_GridManager.Instance.m_GridList[m_currentTile.m_TileX + 1][m_currentTile.m_TileY]);
     }
 
-    public void PlaceBomb()
+    public bool PlaceBomb()
     {
         if (!m_currentTile.m_Bomb && m_NbOfBombs > 0)
         {
@@ -64,8 +69,11 @@ public class S_Character : MonoBehaviour
             bomb.GetComponent<S_Bomb>().m_Range = m_stats.m_Range;
             bomb.GetComponent<S_Bomb>().m_MaxPerforation = m_stats.m_Perforation;
             bomb.GetComponent<S_Bomb>().m_Tile = m_currentTile;
+            bomb.GetComponent<S_Bomb>().m_Tile.m_IsWalkable = false;
             bomb.GetComponent<S_Bomb>().m_Character = this;
             m_currentTile.m_Bomb = bomb.GetComponent<S_Bomb>();
+            return true;
         }
+        return false;
     }
 }

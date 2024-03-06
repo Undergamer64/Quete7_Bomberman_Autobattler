@@ -6,6 +6,7 @@ public class S_GridManager : MonoBehaviour
     public static S_GridManager Instance;
 
     public List<List<S_Tile>> m_GridList = new();
+    public List<S_Tile> m_DangerousTiles=new();
 
     public int m_Width, m_Height;
     [SerializeField] private S_Tile m_tile;
@@ -93,18 +94,22 @@ public class S_GridManager : MonoBehaviour
         S_Tile spawntile = m_GridList[1][1];
         m_characters[0].GetComponent<S_Character>().m_currentTile = spawntile;
         m_characters[0].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+        spawntile.m_Character = m_characters[0].GetComponent<S_Character>();
 
         spawntile = m_GridList[1][11];
         m_characters[1].GetComponent<S_Character>().m_currentTile = spawntile;
         m_characters[1].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+        spawntile.m_Character = m_characters[1].GetComponent<S_Character>();
 
         spawntile = m_GridList[15][1];
         m_characters[2].GetComponent<S_Character>().m_currentTile = spawntile;
         m_characters[2].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+        spawntile.m_Character = m_characters[2].GetComponent<S_Character>();
 
         spawntile = m_GridList[15][11];
         m_characters[3].GetComponent<S_Character>().m_currentTile = spawntile;
         m_characters[3].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+        spawntile.m_Character = m_characters[3].GetComponent<S_Character>();
 
         Camera.main.transform.position = new Vector3(m_Width / 2, m_Height / 2, -10);
         Camera.main.orthographicSize = 7;

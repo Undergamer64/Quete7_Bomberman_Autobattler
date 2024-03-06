@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 2767b754e81c876409b43ebed2b2ff04
+guid: b7a3b26c3a55e364fab0dc13dfb499d4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - m_ListOfBombs: {instanceID: 0}
-  - m_GridManager: {instanceID: 0}
-  - m_Character: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

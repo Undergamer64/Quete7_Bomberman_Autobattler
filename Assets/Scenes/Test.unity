@@ -442,6 +442,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2606217110476148440, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
+      propertyPath: m_Character
+      value: 
+      objectReference: {fileID: 1921619519}
+    - target: {fileID: 2606217110476148440, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
+      propertyPath: m_GridManager
+      value: 
+      objectReference: {fileID: 1688959785}
+    - target: {fileID: 2606217110476148440, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
       propertyPath: m_ListOfBombs
       value: 
       objectReference: {fileID: 1701116108}
@@ -454,9 +462,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1701116108}
     - target: {fileID: 6867374554822079433, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
+      propertyPath: m_Character
+      value: 
+      objectReference: {fileID: 818355951}
+    - target: {fileID: 6867374554822079433, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
+      propertyPath: m_GridManager
+      value: 
+      objectReference: {fileID: 1688959785}
+    - target: {fileID: 6867374554822079433, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
       propertyPath: m_ListOfBombs
       value: 
       objectReference: {fileID: 1701116108}
+    - target: {fileID: 7242904524630026152, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
+      propertyPath: m_Character
+      value: 
+      objectReference: {fileID: 1749556207}
+    - target: {fileID: 7242904524630026152, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
+      propertyPath: m_GridManager
+      value: 
+      objectReference: {fileID: 1688959785}
     - target: {fileID: 7242904524630026152, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
       propertyPath: m_ListOfBombs
       value: 
@@ -500,7 +524,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1028895116594567582, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1545922806}
   m_SourcePrefab: {fileID: 100100000, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
 --- !u!1 &818355951 stripped
 GameObject:
@@ -596,6 +623,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381df85a272988e4a8f2b27351f43d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1545922806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545922800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2767b754e81c876409b43ebed2b2ff04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ListOfBombs: {fileID: 1701116108}
+  m_GridManager: {fileID: 1688959785}
+  m_Character: {fileID: 1545922800}
+  m_Path: []
+--- !u!1 &1688959785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2402026923276551410, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
+  m_PrefabInstance: {fileID: 575866783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1701116108
 GameObject:
   m_ObjectHideFlags: 0

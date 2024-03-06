@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pathfinding
 {
+
     private const int MOVE_STRAIGHT_COST = 10;
     private List<S_Tile> m_openList;
     private List<S_Tile> m_closedList;
@@ -40,11 +42,20 @@ public class Pathfinding
                 if (m_closedList.Contains(tile)) continue;
                 if (!tile.m_IsWalkable)
                 {
+                    if (tile == endTile)
+                    {
+                        tile.m_PreviousTile = currentTile;
+                        return CalculatePath(tile);
+                    }
                     m_closedList.Add(tile);
                     continue;
                 }
 
                 int tentativeGCost= CalculateDistance(currentTile, tile);
+                if (tile.m_MoveCost > 0)
+                {
+                    tentativeGCost += tile.m_MoveCost;
+                }
                 if (tentativeGCost < tile.m_GCost)
                 {
                     tile.m_PreviousTile=currentTile;
@@ -64,7 +75,7 @@ public class Pathfinding
 
     }
 
-    private List<S_Tile> GetNeighbourTile(S_Tile tile)
+    public List<S_Tile> GetNeighbourTile(S_Tile tile)
     {
         List<S_Tile> neighbourList= new List<S_Tile>();
 
@@ -100,6 +111,7 @@ public class Pathfinding
             path.Add(currentTile.m_PreviousTile);
             currentTile = currentTile.m_PreviousTile;
         }
+        path.Remove(path[path.Count-1]);
         path.Reverse();
         return path;
     }
@@ -108,6 +120,7 @@ public class Pathfinding
         int XDistance= Mathf.Abs(a.m_TileX - b.m_TileX);
         int YDistance= Mathf.Abs(a.m_TileY - b.m_TileY);
         int result = Mathf.Abs(XDistance - YDistance);
+
         return MOVE_STRAIGHT_COST * result;
     }
     private S_Tile GetLowestFCost(List<S_Tile> tiles)

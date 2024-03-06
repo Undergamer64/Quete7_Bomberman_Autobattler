@@ -10,6 +10,7 @@ public class S_Tile : MonoBehaviour
     public int m_GCost;
     public int m_HCost;
     public int m_FCost;
+    public int m_MoveCost=0;
     public bool m_IsWalkable=true;
     public S_Tile m_PreviousTile;
 
