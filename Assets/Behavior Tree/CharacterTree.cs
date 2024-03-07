@@ -13,6 +13,7 @@ public class CharacterTree : BehaviorTree.Tree
     {
         Node root = new Selector(new List<Node>
         {
+            //Defensive
             new Sequence(new List<Node> 
                 {
                 new CheckExplosionNode(m_ListOfBombs, m_Character), 
