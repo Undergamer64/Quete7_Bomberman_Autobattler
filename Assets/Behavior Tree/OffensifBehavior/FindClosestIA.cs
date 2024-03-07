@@ -26,7 +26,7 @@ public class FindClosestIA : Node
         for (int i = 0; i < m_character.transform.parent.childCount; i++)
         {
             GameObject currentChild = m_character.transform.parent.transform.GetChild(i).gameObject;
-            if (!currentChild==m_character)
+            if (currentChild != m_character) 
             {
                 dist.Add(currentChild.GetComponent<S_Character>().m_currentTile);
             }

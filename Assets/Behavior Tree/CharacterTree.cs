@@ -26,7 +26,8 @@ public class CharacterTree : BehaviorTree.Tree
                 {
                 new Sequence(new List<Node>
                 {
-
+                    new CheckForPlayers(m_Character),
+                    new PlaceBomb(m_Character)
                 }),
                 new Sequence(new List<Node>
                 {

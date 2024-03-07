@@ -33,103 +33,97 @@ public class CheckForPlayers : Node
         {
             GameObject currentChild = m_character.transform.GetChild(i).gameObject;
 
-            if (currentChild.name != m_character.name)
+            if (currentChild.name == m_character.name)
             {
-                bool encounterObstacle = false;
-                int range = 0;
-                int Perforation = currentChild.GetComponent<S_Character>().m_BombPerforation;
-                for (int j = 0; j <= currentChild.GetComponent<S_Character>().m_BombRange; j++)
+                continue;
+            }
+
+            bool encounterObstacle = false;
+            int Perforation = currentChild.GetComponent<S_Character>().m_BombPerforation;
+            for (int j = 0; j <= currentChild.GetComponent<S_Character>().m_BombRange; j++)
+            {
+                S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Character>().m_currentTile.m_TileX + j][currentChild.GetComponent<S_Character>().m_currentTile.m_TileY];
+                if (!currentTile.CompareTag("Untagged"))
                 {
-                    range = j;
-                    S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Character>().m_currentTile.m_TileX + j][currentChild.GetComponent<S_Character>().m_currentTile.m_TileY];
-                    if (!currentTile.CompareTag("Untagged"))
+                    Perforation--;
+                    if (currentTile.CompareTag("Wall") || Perforation <= 0)
                     {
-                        Perforation--;
-                        if (currentTile.CompareTag("Wall") || Perforation <= 0)
-                        {
-                            encounterObstacle = true;
-                        }
-                    }
-                    if (encounterObstacle)
-                    {
-                        break;
-                    }
-                    if (!m_reach.Contains(currentTile))
-                    {
-                        m_reach.Add(currentTile);
+                        encounterObstacle = true;
                     }
                 }
-                encounterObstacle = false;
-                range = 0;
-                Perforation = currentChild.GetComponent<S_Character>().m_BombPerforation;
-                for (int j = 0; j <= currentChild.GetComponent<S_Character>().m_BombRange; j++)
+                if (encounterObstacle)
                 {
-                    range = j;
-                    S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Character>().m_currentTile.m_TileX - j][currentChild.GetComponent<S_Character>().m_currentTile.m_TileY];
-                    if (!currentTile.CompareTag("Untagged"))
+                    break;
+                }
+                if (!m_reach.Contains(currentTile))
+                {
+                    m_reach.Add(currentTile);
+                }
+            }
+            encounterObstacle = false;
+            Perforation = currentChild.GetComponent<S_Character>().m_BombPerforation;
+            for (int j = 0; j <= currentChild.GetComponent<S_Character>().m_BombRange; j++)
+            {
+                S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Character>().m_currentTile.m_TileX - j][currentChild.GetComponent<S_Character>().m_currentTile.m_TileY];
+                if (!currentTile.CompareTag("Untagged"))
+                {
+                    Perforation--;
+                    if (currentTile.CompareTag("Wall") || Perforation <= 0)
                     {
-                        Perforation--;
-                        if (currentTile.CompareTag("Wall") || Perforation <= 0)
-                        {
-                            encounterObstacle = true;
-                        }
-                    }
-                    if (encounterObstacle)
-                    {
-                        break;
-                    }
-                    if (!m_reach.Contains(currentTile))
-                    {
-                        m_reach.Add(currentTile);
+                        encounterObstacle = true;
                     }
                 }
-                encounterObstacle = false;
-                range = 0;
-                Perforation = currentChild.GetComponent<S_Character>().m_BombPerforation;
-                for (int j = 0; j <= currentChild.GetComponent<S_Character>().m_BombRange; j++)
+                if (encounterObstacle)
                 {
-                    range = j;
-                    S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Character>().m_currentTile.m_TileX][currentChild.GetComponent<S_Character>().m_currentTile.m_TileY + j];
-                    if (!currentTile.CompareTag("Untagged"))
+                    break;
+                }
+                if (!m_reach.Contains(currentTile))
+                {
+                    m_reach.Add(currentTile);
+                }
+            }
+            encounterObstacle = false;
+            Perforation = currentChild.GetComponent<S_Character>().m_BombPerforation;
+            for (int j = 0; j <= currentChild.GetComponent<S_Character>().m_BombRange; j++)
+            {
+                S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Character>().m_currentTile.m_TileX][currentChild.GetComponent<S_Character>().m_currentTile.m_TileY + j];
+                if (!currentTile.CompareTag("Untagged"))
+                {
+                    Perforation--;
+                    if (currentTile.CompareTag("Wall") || Perforation <= 0)
                     {
-                        Perforation--;
-                        if (currentTile.CompareTag("Wall") || Perforation <= 0)
-                        {
-                            encounterObstacle = true;
-                        }
-                    }
-                    if (encounterObstacle)
-                    {
-                        break;
-                    }
-                    if (!m_reach.Contains(currentTile))
-                    {
-                        m_reach.Add(currentTile);
+                        encounterObstacle = true;
                     }
                 }
-                encounterObstacle = false;
-                range = 0;
-                Perforation = currentChild.GetComponent<S_Character>().m_BombPerforation;
-                for (int j = 0; j <= currentChild.GetComponent<S_Character>().m_BombRange; j++)
+                if (encounterObstacle)
                 {
-                    range = j;
-                    S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Character>().m_currentTile.m_TileX][currentChild.GetComponent<S_Character>().m_currentTile.m_TileY - j];
-                    if (!currentTile.CompareTag("Untagged"))
+                    break;
+                }
+                if (!m_reach.Contains(currentTile))
+                {
+                    m_reach.Add(currentTile);
+                }
+            }
+            encounterObstacle = false;
+            Perforation = currentChild.GetComponent<S_Character>().m_BombPerforation;
+            for (int j = 0; j <= currentChild.GetComponent<S_Character>().m_BombRange; j++)
+            {
+                S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Character>().m_currentTile.m_TileX][currentChild.GetComponent<S_Character>().m_currentTile.m_TileY - j];
+                if (!currentTile.CompareTag("Untagged"))
+                {
+                    Perforation--;
+                    if (currentTile.CompareTag("Wall") || Perforation <= 0)
                     {
-                        Perforation--;
-                        if (currentTile.CompareTag("Wall") || Perforation <= 0)
-                        {
-                            encounterObstacle = true;
-                        }
+                        encounterObstacle = true;
                     }
-                    if (encounterObstacle)
-                    {
-                        break;
-                    }
-                    if (!m_reach.Contains(currentTile))
-                    {
-                        m_reach.Add(currentTile);
-                    }
+                }
+                if (encounterObstacle)
+                {
+                    break;
+                }
+                if (!m_reach.Contains(currentTile))
+                {
+                    m_reach.Add(currentTile);
                 }
             }
         }
