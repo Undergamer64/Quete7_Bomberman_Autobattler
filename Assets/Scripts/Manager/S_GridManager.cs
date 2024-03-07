@@ -118,7 +118,7 @@ public class S_GridManager : MonoBehaviour
 
     public void UpdateDanger()
     {
-        List<S_Tile> m_DangerousTiles = new List<S_Tile>();
+        m_DangerousTiles.Clear();
         for (int i = 0; i < m_ListOfBombs.transform.childCount; i++)
         {
             GameObject currentChild = m_ListOfBombs.transform.GetChild(i).gameObject;
@@ -199,6 +199,10 @@ public class S_GridManager : MonoBehaviour
                     m_DangerousTiles.Add(currentTile);
                 }
             }
+        }
+        foreach (var tile in m_DangerousTiles)
+        {
+            tile.m_MoveCost = 500;
         }
     }
 }

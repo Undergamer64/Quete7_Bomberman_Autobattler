@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class CheckExplosionNode : Node
 {
-    private GameObject m_listOfBombs;
     private GameObject m_character;
-    private List<S_Tile> m_dangerousPlaces = new List<S_Tile>();
 
     public CheckExplosionNode(GameObject ListOfBombs, GameObject Character)
     {
-        m_listOfBombs = ListOfBombs;
         m_character = Character;
     }
 
@@ -29,6 +26,7 @@ public class CheckExplosionNode : Node
 
     private bool IsSafe()
     {
+        S_GridManager.Instance.UpdateDanger();
         return !S_GridManager.Instance.m_DangerousTiles.Contains(m_character.GetComponent<S_Character>().m_currentTile);
     }
 
