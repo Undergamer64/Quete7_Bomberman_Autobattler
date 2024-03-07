@@ -125,13 +125,18 @@ public class S_GridManager : MonoBehaviour
 
             bool encounterObstacle = false;
             int range = 0;
+            int Perforation = currentChild.GetComponent<S_Bomb>().m_MaxPerforation;
             for (int j = 0; j <= currentChild.GetComponent<S_Bomb>().m_Range; j++)
             {
                 range = j;
                 S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Bomb>().m_Tile.m_TileX + j][currentChild.GetComponent<S_Bomb>().m_Tile.m_TileY];
-                if (!currentChild.CompareTag("Untagged"))
+                if (!currentTile.CompareTag("Untagged"))
                 {
-                    encounterObstacle = true;
+                    Perforation--;
+                    if (currentTile.CompareTag("Wall") || Perforation <= 0)
+                    {
+                        encounterObstacle = true;
+                    }
                 }
                 if (encounterObstacle)
                 {
@@ -144,13 +149,18 @@ public class S_GridManager : MonoBehaviour
             }
             encounterObstacle = false;
             range = 0;
+            Perforation = currentChild.GetComponent<S_Bomb>().m_MaxPerforation;
             for (int j = 0; j <= currentChild.GetComponent<S_Bomb>().m_Range; j++)
             {
                 range = j;
                 S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Bomb>().m_Tile.m_TileX - j][currentChild.GetComponent<S_Bomb>().m_Tile.m_TileY];
-                if (!currentChild.CompareTag("Untagged"))
+                if (!currentTile.CompareTag("Untagged"))
                 {
-                    encounterObstacle = true;
+                    Perforation--;
+                    if (currentTile.CompareTag("Wall") || Perforation <= 0)
+                    {
+                        encounterObstacle = true;
+                    }
                 }
                 if (encounterObstacle)
                 {
@@ -163,13 +173,18 @@ public class S_GridManager : MonoBehaviour
             }
             encounterObstacle = false;
             range = 0;
+            Perforation = currentChild.GetComponent<S_Bomb>().m_MaxPerforation;
             for (int j = 0; j <= currentChild.GetComponent<S_Bomb>().m_Range; j++)
             {
                 range = j;
                 S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Bomb>().m_Tile.m_TileX][currentChild.GetComponent<S_Bomb>().m_Tile.m_TileY + j];
-                if (!currentChild.CompareTag("Untagged"))
+                if (!currentTile.CompareTag("Untagged"))
                 {
-                    encounterObstacle = true;
+                    Perforation--;
+                    if (currentTile.CompareTag("Wall") || Perforation <= 0)
+                    {
+                        encounterObstacle = true;
+                    }
                 }
                 if (encounterObstacle)
                 {
@@ -182,13 +197,18 @@ public class S_GridManager : MonoBehaviour
             }
             encounterObstacle = false;
             range = 0;
+            Perforation = currentChild.GetComponent<S_Bomb>().m_MaxPerforation;
             for (int j = 0; j <= currentChild.GetComponent<S_Bomb>().m_Range; j++)
             {
                 range = j;
                 S_Tile currentTile = S_GridManager.Instance.m_GridList[currentChild.GetComponent<S_Bomb>().m_Tile.m_TileX][currentChild.GetComponent<S_Bomb>().m_Tile.m_TileY - j];
-                if (!currentChild.CompareTag("Untagged"))
+                if (!currentTile.CompareTag("Untagged"))
                 {
-                    encounterObstacle = true;
+                    Perforation--;
+                    if (currentTile.CompareTag("Wall") || Perforation <= 0)
+                    {
+                        encounterObstacle = true;
+                    }
                 }
                 if (encounterObstacle)
                 {

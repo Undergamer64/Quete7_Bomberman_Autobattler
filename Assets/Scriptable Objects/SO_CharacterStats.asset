@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SO_CharacterStats
   m_EditorClassIdentifier: 
   m_Lives: 3
-  m_Speed: 0.5
-  m_nbTraps: 1
-  m_Range: 1
-  m_Perforation: 1
+  m_Speed: 0.25
+  m_nbTraps: 3
+  m_Range: 3
+  m_Perforation: 2
   m_CanMoveTraps: 0
