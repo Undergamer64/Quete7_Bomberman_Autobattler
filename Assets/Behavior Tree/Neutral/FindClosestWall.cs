@@ -36,12 +36,14 @@ public class FindClosestWall : Node
             path = m_pathfinding.FindPath(m_character.GetComponent<S_Character>().m_currentTile, wall.GetComponent<S_Tile>());
             if (path != null)
             {
-                if (!m_gridManager.GetComponent<S_GridManager>().m_DangerousTiles.Contains(path[path.Count - 1]))
+                m_gridManager.GetComponent<S_GridManager>().UpdateDanger();
+                if (!m_gridManager.GetComponent<S_GridManager>().m_DangerousTiles.Contains(path[0]))
                 {
                     dist.Clear();
                     state = NodeState.SUCCESS;
                     break;
                 }
+                path.Clear();
             }
         }
         dist.Clear();

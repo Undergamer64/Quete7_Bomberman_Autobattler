@@ -17,13 +17,9 @@ public class MoveTo : Node
         List<S_Tile> path = (List<S_Tile>)GetData("path");
         if (path.Count != 0)
         {
-            if (m_character.GetComponent<S_Character>().MoveToTile(path[0]))
-            {
-                state = NodeState.SUCCESS;
-                return state;
-            }
+            m_character.GetComponent<S_Character>().MoveToTile(path[0]);
         }
-        state = NodeState.FAILURE;
+        state = NodeState.SUCCESS;
         return state;
     }
 }
