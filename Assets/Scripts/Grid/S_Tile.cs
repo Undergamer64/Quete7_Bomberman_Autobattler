@@ -4,6 +4,7 @@ public class S_Tile : MonoBehaviour
 {
     public int m_TileX;
     public int m_TileY;
+    public int m_Dist;
 
     public S_Character m_Character;
     public S_Bomb m_Bomb;

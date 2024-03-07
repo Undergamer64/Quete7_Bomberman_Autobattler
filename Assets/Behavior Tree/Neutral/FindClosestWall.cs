@@ -8,7 +8,7 @@ public class FindClosestWall : Node
     private GameObject m_gridManager;
     private GameObject m_character;
     private Pathfinding m_pathfinding;
-    private List<GameObject> dist = new List<GameObject>();
+    private List<S_Tile> dist = new List<S_Tile>();
 
     public FindClosestWall(GameObject gridRef, GameObject charRef)
     {
@@ -26,19 +26,28 @@ public class FindClosestWall : Node
         {
             if (m_gridManager.transform.GetChild(i).CompareTag("Destructable"))
             {
-                dist.Add(m_gridManager.transform.GetChild(i).gameObject);
+                dist.Add(m_gridManager.transform.GetChild(i).gameObject.GetComponent<S_Tile>());
             }
         }
-        dist.OrderBy(x => m_pathfinding.CalculateDistance(x.GetComponent<S_Tile>(), m_character.GetComponent<S_Character>().m_currentTile));
-        List<S_Tile> path = null;
-        foreach (GameObject wall in dist)
+        foreach (S_Tile distance in dist) 
         {
-            path = m_pathfinding.FindPath(m_character.GetComponent<S_Character>().m_currentTile, wall.GetComponent<S_Tile>());
+            distance.m_Dist = m_pathfinding.CalculateDistance(distance, m_character.GetComponent<S_Character>().m_currentTile);
+        }
+        dist=dist.OrderBy(x => x.m_Dist).ToList();
+        List<S_Tile> path = null;
+         foreach (S_Tile wall in dist)
+        {
+            path = m_pathfinding.FindPath(m_character.GetComponent<S_Character>().m_currentTile, wall);
             if (path != null)
             {
-                dist.Clear();
-                state = NodeState.SUCCESS;
-                break;
+                m_gridManager.GetComponent<S_GridManager>().UpdateDanger();
+                if (!m_gridManager.GetComponent<S_GridManager>().m_DangerousTiles.Contains(path[0]))
+                {
+                    dist.Clear();
+                    state = NodeState.SUCCESS;
+                    break;
+                }
+                path.Clear();
             }
         }
         dist.Clear();

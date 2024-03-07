@@ -56,7 +56,7 @@ public class Pathfinding
                 {
                     tentativeGCost += tile.m_MoveCost;
                 }
-                if (tentativeGCost < tile.m_GCost)
+                if (tentativeGCost < tile.m_GCost && tentativeGCost <= 600)
                 {
                     tile.m_PreviousTile=currentTile;
                     tile.m_GCost=tentativeGCost;
