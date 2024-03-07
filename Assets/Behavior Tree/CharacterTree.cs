@@ -21,13 +21,20 @@ public class CharacterTree : BehaviorTree.Tree
                 new MoveTo(m_Character)
                 }
             ),
-            new Sequence(new List<Node> 
+            //Offensif
+            new Selector(new List<Node> 
                 {
-                new OffensifCheckNode(), 
-                new OffesifNode()
+                new Sequence(new List<Node>
+                {
+
+                }),
+                new Sequence(new List<Node>
+                {
+
+                })
                 }
             ),
-            //neutral
+            //Neutral
             new Selector(
                 new List<Node>
                 {
