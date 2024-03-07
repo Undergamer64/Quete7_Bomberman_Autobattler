@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class S_Character : MonoBehaviour
@@ -14,30 +15,53 @@ public class S_Character : MonoBehaviour
     [SerializeField]
     private GameObject m_bombPrefab;
 
+    [SerializeField]
+    private float m_timeToWait;
+
+    [SerializeField]
+    private bool m_canMove=true;
+
     public int m_NbOfBombs = 1;
     public S_Tile m_currentTile;
 
     private void Start()
     {
+        m_timeToWait = m_stats.m_Speed;
         m_NbOfBombs = m_stats.m_nbTraps;
+    }
+
+    public IEnumerator Temporisation()
+    {
+        m_canMove = false;
+        yield return new WaitForSeconds(m_timeToWait);
+        yield return new WaitForSeconds(Random.Range(0,0.2f));
+        m_canMove = true;
     }
 
     public bool MoveToTile(S_Tile tile)
     {
-        if (m_currentTile.CanReach(tile))
+        if (m_canMove)
         {
-            if (!tile.gameObject.CompareTag("Wall") && !tile.gameObject.CompareTag("Destructable") && !tile.m_Character)
+            if (m_currentTile.CanReach(tile))
             {
-                m_currentTile.m_Character = null;
-                m_currentTile.m_IsWalkable = true;
-                m_currentTile = tile;
-                m_currentTile.m_IsWalkable = false;
-                m_currentTile.m_Character = this;
-                transform.position = new Vector3( m_currentTile.m_TileX, m_currentTile.m_TileY, -1);
-                return true;
+                if (!tile.gameObject.CompareTag("Wall") && !tile.gameObject.CompareTag("Destructable") && !tile.m_Character)
+                {
+                    m_currentTile.m_Character = null;
+                    m_currentTile.m_IsWalkable = true;
+                    m_currentTile = tile;
+                    m_currentTile.m_IsWalkable = false;
+                    m_currentTile.m_Character = this;
+                    transform.position = new Vector3(m_currentTile.m_TileX, m_currentTile.m_TileY, -1);
+                    StartCoroutine(Temporisation());
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public void MoveUp()
