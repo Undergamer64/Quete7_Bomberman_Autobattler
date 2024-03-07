@@ -20,6 +20,7 @@ public class MoveTo : Node
             if (m_character.GetComponent<S_Character>().MoveToTile(path[0]))
             {
                 state = NodeState.SUCCESS;
+                return state;
             }
         }
         state = NodeState.FAILURE;

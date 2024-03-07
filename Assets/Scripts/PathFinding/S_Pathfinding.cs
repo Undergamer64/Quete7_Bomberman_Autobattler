@@ -52,10 +52,6 @@ public class Pathfinding
                 }
 
                 int tentativeGCost= CalculateDistance(currentTile, tile);
-                if (tile.m_MoveCost > 0)
-                {
-                    tentativeGCost += tile.m_MoveCost;
-                }
                 if (tentativeGCost < tile.m_GCost)
                 {
                     tile.m_PreviousTile=currentTile;
