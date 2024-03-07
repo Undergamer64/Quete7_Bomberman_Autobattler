@@ -105,7 +105,7 @@ public class S_Character : MonoBehaviour
 
     public bool PlaceBomb()
     {
-        if (!m_currentTile.m_Bomb && m_NbOfBombs > 0)
+        if (!m_currentTile.m_Bomb && m_NbOfBombs > 0 && m_canMove)
         {
             m_NbOfBombs -= 1;
             GameObject bomb = Instantiate(m_bombPrefab, transform.position, Quaternion.identity, m_listOfBombs.transform);
@@ -115,6 +115,7 @@ public class S_Character : MonoBehaviour
             bomb.GetComponent<S_Bomb>().m_Tile.m_IsWalkable = false;
             bomb.GetComponent<S_Bomb>().m_Character = this;
             m_currentTile.m_Bomb = bomb.GetComponent<S_Bomb>();
+            S_GridManager.Instance.UpdateDanger();
             return true;
         }
         return false;

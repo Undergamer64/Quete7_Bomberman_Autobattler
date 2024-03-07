@@ -15,10 +15,14 @@ public class S_Explosion : MonoBehaviour
     {
         yield return new WaitForSeconds(m_explosionTime);
         m_Tile.m_MoveCost = 0;
+        Destroy(gameObject);
+    }
+
+    private void Update()
+    {
         if (m_Tile.m_Character)
         {
             m_Tile.m_Character.TakeDamage();
         }
-        Destroy(gameObject);
     }
 }
