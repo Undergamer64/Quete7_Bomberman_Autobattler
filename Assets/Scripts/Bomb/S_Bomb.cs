@@ -35,8 +35,13 @@ public class S_Bomb : MonoBehaviour
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].CompareTag("Destructable"))
             {
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].ChangeTag("Untagged");
-                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 5;
+                newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY];
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 0.5f;
                 newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY];
 
                 m_Perforation -= 1;
@@ -52,8 +57,13 @@ public class S_Bomb : MonoBehaviour
             }
             else
             {
-                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 5;
+                newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY];
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 0.5f;
                 newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY];
             }
             if (m_encounterObstacle)
@@ -68,8 +78,13 @@ public class S_Bomb : MonoBehaviour
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].CompareTag("Destructable"))
             {
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].ChangeTag("Untagged");
-                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 5;
+                newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY];
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 0.5f;
                 newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY];
 
                 m_Perforation -= 1;
@@ -85,8 +100,13 @@ public class S_Bomb : MonoBehaviour
             }
             else
             {
-                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 5;
+                newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY];
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 0.5f;
                 newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY];
             }
             if (m_encounterObstacle)
@@ -101,8 +121,13 @@ public class S_Bomb : MonoBehaviour
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].CompareTag("Destructable"))
             {
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].ChangeTag("Untagged");
-                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].transform.position, Quaternion.identity);
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 5;
+                newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i];
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 0.5f;
                 newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i];
 
                 m_Perforation -= 1;
@@ -118,8 +143,13 @@ public class S_Bomb : MonoBehaviour
             }
             else
             {
-                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].transform.position, Quaternion.identity);
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 5;
+                newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i];
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 0.5f;
                 newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i];
             }
             if (m_encounterObstacle)
@@ -134,8 +164,13 @@ public class S_Bomb : MonoBehaviour
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].CompareTag("Destructable"))
             {
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].ChangeTag("Untagged");
-                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].transform.position, Quaternion.identity);
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 5;
+                newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i];
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 0.5f;
                 newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i];
 
                 m_Perforation -= 1;
@@ -152,8 +187,13 @@ public class S_Bomb : MonoBehaviour
             }
             else
             {
-                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].transform.position, Quaternion.identity);
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 5;
+                newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i];
+                newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
+                newExplosion.name = $"Explosion";
+                newExplosion.GetComponent<S_Explosion>().m_speed = 0.5f;
                 newExplosion.GetComponent<S_Explosion>().m_Tile = S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i];
             }
             if (m_encounterObstacle)
