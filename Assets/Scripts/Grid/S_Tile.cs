@@ -53,7 +53,7 @@ public class S_Tile : MonoBehaviour
                 m_IsWalkable = true;
                 break;
             case "Wall":
-                this.gameObject.GetComponent<SpriteRenderer>().sprite = S_GridManager.Instance.m_WallSprite;
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = S_GridManager.Instance.m_WallSprites[Random.Range(0, S_GridManager.Instance.m_WallSprites.Count)];
                 break;
             case "Destructable":
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = S_GridManager.Instance.m_DestructableWallSprite;

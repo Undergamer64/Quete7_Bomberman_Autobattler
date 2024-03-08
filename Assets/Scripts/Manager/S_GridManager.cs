@@ -15,9 +15,9 @@ public class S_GridManager : MonoBehaviour
     [SerializeField] private List<GameObject> m_characters;
 
     [Header("Differents tile's types :")]
-    [SerializeField] public Sprite m_TileSprite;
-    [SerializeField] public Sprite m_WallSprite;
-    [SerializeField] public Sprite m_DestructableWallSprite;
+    public Sprite m_TileSprite;
+    public Sprite m_DestructableWallSprite;
+    public List<Sprite> m_WallSprites;
 
     private Dictionary<Vector2, S_Tile> m_tilesDictionary;
 
@@ -61,7 +61,7 @@ public class S_GridManager : MonoBehaviour
                 {
                     spawnedTile.tag = "Wall";
                     spawnedTile.m_IsWalkable = false;
-                    spawnedTile.GetComponent<SpriteRenderer>().sprite = m_WallSprite;
+                    spawnedTile.GetComponent<SpriteRenderer>().sprite = m_WallSprites[Random.Range(0, 4)];
                 }
                 //grid Wall
                 if ((x >= 2 && y >= 2) && (x <= 14 && y <= 10))
@@ -70,7 +70,7 @@ public class S_GridManager : MonoBehaviour
                     {
                         spawnedTile.tag = "Wall";
                         spawnedTile.m_IsWalkable = false;
-                        spawnedTile.GetComponent<SpriteRenderer>().sprite = m_WallSprite;
+                        spawnedTile.GetComponent<SpriteRenderer>().sprite = m_WallSprites[Random.Range(0, S_GridManager.Instance.m_WallSprites.Count)];
                     }
                 }
 

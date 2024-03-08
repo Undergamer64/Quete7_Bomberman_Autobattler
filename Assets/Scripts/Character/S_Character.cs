@@ -60,6 +60,11 @@ public class S_Character : MonoBehaviour
             {
                 if (!tile.gameObject.CompareTag("Wall") && !tile.gameObject.CompareTag("Destructable") && !tile.m_Character)
                 {
+                    Vector2 dist;
+                    dist.x = m_currentTile.transform.position.x - tile.transform.position.x;
+                    dist.y = m_currentTile.transform.position.y - tile.transform.position.y;
+                    float angle = Mathf.Atan2(dist.y,dist.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
                     m_currentTile.m_Character = null;
                     m_currentTile.m_IsWalkable = true;
                     m_currentTile = tile;
