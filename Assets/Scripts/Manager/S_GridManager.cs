@@ -16,7 +16,7 @@ public class S_GridManager : MonoBehaviour
 
     [Header("Differents tile's types :")]
     public Sprite m_TileSprite;
-    public Sprite m_DestructableWallSprite;
+    public List<Sprite> m_DestructableWallSprite;
     public List<Sprite> m_WallSprites;
 
     private Dictionary<Vector2, S_Tile> m_tilesDictionary;
@@ -52,7 +52,7 @@ public class S_GridManager : MonoBehaviour
                 {
                     spawnedTile.tag = "Destructable";
                     spawnedTile.m_IsWalkable = false;
-                    spawnedTile.GetComponent<SpriteRenderer>().sprite = m_DestructableWallSprite;
+                    spawnedTile.GetComponent<SpriteRenderer>().sprite = m_DestructableWallSprite[Random.Range(0, m_DestructableWallSprite.Count)];
                 }
 
                 //Placement of the Walls :
@@ -70,7 +70,7 @@ public class S_GridManager : MonoBehaviour
                     {
                         spawnedTile.tag = "Wall";
                         spawnedTile.m_IsWalkable = false;
-                        spawnedTile.GetComponent<SpriteRenderer>().sprite = m_WallSprites[Random.Range(0, S_GridManager.Instance.m_WallSprites.Count)];
+                        spawnedTile.GetComponent<SpriteRenderer>().sprite = m_WallSprites[Random.Range(0, m_WallSprites.Count)];
                     }
                 }
 
