@@ -14,6 +14,7 @@ public class S_Explosion : MonoBehaviour
         dist.y = m_Tile.transform.position.y - transform.position.y;
         float angle = Mathf.Atan2(dist.y, dist.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+        m_Tile.m_IsWalkable = false;
         StartCoroutine(Deflagration());
     }
     public IEnumerator Deflagration()
@@ -22,6 +23,8 @@ public class S_Explosion : MonoBehaviour
         transform.position = m_Tile.transform.position;
         m_Tile.m_MoveCost = 0;
         Destroy(gameObject);
+        m_Tile.m_MoveCost = 0;
+        m_Tile.m_IsWalkable = true;
     }
 
     private void Update()
