@@ -13,13 +13,7 @@ public class S_ShopManager : MonoBehaviour
     private List<GameObject> m_buttons;
 
     [SerializeField]
-    private GameObject m_skipButton;
-
-    [SerializeField]
     private S_Character m_character;
-
-    [SerializeField]
-    private List<Sprite> m_upgradeSprites;
 
     delegate bool ApplyUpgrade(S_Character character);
 
@@ -51,11 +45,10 @@ public class S_ShopManager : MonoBehaviour
         //Play animation here
 
         Time.timeScale = 0;
-        for (int i = 0; i < m_buttons.Count; i++)
+        for (int i = 0; i < m_buttons.Count-1; i++)
         {
-            int randomUpgrade = UnityEngine.Random.Range(0, m_upgrades.Count);
+            int randomUpgrade = UnityEngine.Random.Range(0, m_upgrades.Count-1);
             m_upgradesInShop.Add(m_upgrades[randomUpgrade]);
-            m_buttons[i].GetComponent<Image>().sprite = m_upgradeSprites[randomUpgrade];
         }
 
         //temp
@@ -69,35 +62,19 @@ public class S_ShopManager : MonoBehaviour
         {
             m_buttons[i].SetActive(state);
         }
-        m_skipButton.SetActive(state);
     }
 
     public void Upgrade(int upgradeIndex)
     {
-        bool success = false;
         if (upgradeIndex >= 0 && upgradeIndex <= m_buttons.Count-1)
         {
-            success = m_upgradesInShop[upgradeIndex](m_character);
+            m_upgradesInShop[upgradeIndex](m_character);
         }
-
-        if (success)
-        {
-            m_upgradesInShop.Clear();
-
-            //temp
-            ChangeButtonsEvent(false);
-
-            ResetGrid();
-        }
-    }
-
-    public void Skip()
-    {
         m_upgradesInShop.Clear();
 
         //temp
         ChangeButtonsEvent(false);
-        ResetGrid();
+        Time.timeScale = 1.0f;
     }
 
     bool NbTrapUpgrade(S_Character character)
@@ -163,19 +140,5 @@ public class S_ShopManager : MonoBehaviour
             }
         }
         return false;
-    }
-
-    void ResetGrid()
-    {
-        /*
-        while (S_GridManager.Instance.gameObject.transform.childCount > 0)
-        {
-            Destroy(S_GridManager.Instance.gameObject.transform.GetChild(0));
-        }
-        S_GridManager.Instance.GenerateGrid();
-        */
-
-        S_RoundManager.Instance.ChangeTimerState(true);
-        Time.timeScale = 1.0f;
     }
 }

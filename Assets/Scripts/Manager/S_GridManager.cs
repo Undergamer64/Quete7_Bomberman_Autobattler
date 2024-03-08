@@ -35,7 +35,7 @@ public class S_GridManager : MonoBehaviour
     }
 
     // Generate the grid
-    public void GenerateGrid()
+    void GenerateGrid()
     {
         m_tilesDictionary = new Dictionary<Vector2, S_Tile>();
 
