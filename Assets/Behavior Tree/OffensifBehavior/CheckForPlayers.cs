@@ -29,9 +29,9 @@ public class CheckForPlayers : Node
     {
         m_reach.Clear();
 
-        for (int i = 0; i < m_character.transform.childCount; i++)
+        for (int i = 0; i < m_character.transform.parent.childCount; i++)
         {
-            GameObject currentChild = m_character.transform.GetChild(i).gameObject;
+            GameObject currentChild = m_character.transform.parent.GetChild(i).gameObject;
 
             if (currentChild.name == m_character.name)
             {
