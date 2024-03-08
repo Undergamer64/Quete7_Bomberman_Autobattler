@@ -1,5 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class S_Character : MonoBehaviour
 {
@@ -20,6 +22,9 @@ public class S_Character : MonoBehaviour
 
     [SerializeField]
     private bool m_canMove=true;
+
+    [SerializeField]
+    private TextMeshProUGUI lives;
 
     [SerializeField]
     private bool m_canTakeDamage = true;
@@ -138,6 +143,10 @@ public class S_Character : MonoBehaviour
         {
             m_canTakeDamage = false;
             m_lives--;
+
+            if (gameObject.transform== gameObject.transform.parent.transform.GetChild(0))
+            lives.text=m_lives.ToString()+" left";
+
             if (m_lives <= 0)
             {
                 Destroy(gameObject);

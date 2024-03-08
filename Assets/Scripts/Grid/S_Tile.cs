@@ -56,7 +56,7 @@ public class S_Tile : MonoBehaviour
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = S_GridManager.Instance.m_WallSprites[Random.Range(0, S_GridManager.Instance.m_WallSprites.Count)];
                 break;
             case "Destructable":
-                this.gameObject.GetComponent<SpriteRenderer>().sprite = S_GridManager.Instance.m_DestructableWallSprite;
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = S_GridManager.Instance.m_DestructableWallSprite[Random.Range(0, S_GridManager.Instance.m_DestructableWallSprite.Count)];
                 break;
             default:
                 throw new System.ArgumentException("Tag provided is invalid");
