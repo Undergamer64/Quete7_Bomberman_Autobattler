@@ -34,6 +34,11 @@ public class S_Bomb : MonoBehaviour
         {
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].CompareTag("Destructable"))
             {
+                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
+                {
+                    m_Character.coins += Random.Range(1, 3);
+                }
+
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].ChangeTag("Untagged");
                 newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
@@ -77,6 +82,11 @@ public class S_Bomb : MonoBehaviour
         {
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].CompareTag("Destructable"))
             {
+                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
+                {
+                    m_Character.coins += Random.Range(1, 3);
+                }
+
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].ChangeTag("Untagged");
                 newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
@@ -120,6 +130,11 @@ public class S_Bomb : MonoBehaviour
         {
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].CompareTag("Destructable"))
             {
+                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
+                {
+                    m_Character.coins += Random.Range(1, 3);
+                }
+
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].ChangeTag("Untagged");
                 newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
@@ -163,6 +178,11 @@ public class S_Bomb : MonoBehaviour
         {
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].CompareTag("Destructable"))
             {
+                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
+                {
+                    m_Character.coins += Random.Range(1, 3);
+                }
+
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].ChangeTag("Untagged");
                 newExplosion = Instantiate(m_PrefabExplosion, S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY].transform.position, Quaternion.identity);
                 newExplosion.name = $"Explosion";
