@@ -31,13 +31,22 @@ public class GetSafePlaces : Node
                 }
             }
         }
-        SafePlaces.OrderBy(x => m_pathfinding.CalculateDistance(x.GetComponent<S_Tile>(), m_character.GetComponent<S_Character>().m_currentTile));
+        foreach (S_Tile distance in SafePlaces)
+        {
+            distance.m_Dist = m_pathfinding.CalculateDistance(distance, m_character.GetComponent<S_Character>().m_currentTile);
+        }
+        SafePlaces = SafePlaces.OrderBy(x => x.m_Dist).ToList();
         List<S_Tile> path = null;
         foreach (S_Tile tile in SafePlaces)
         {
-            path = m_pathfinding.FindPath(m_character.GetComponent<S_Character>().m_currentTile, tile.GetComponent<S_Tile>());
+            path = m_pathfinding.FindPath(m_character.GetComponent<S_Character>().m_currentTile, tile);
             if (path != null)
             {
+                if (path.Count == 1 && path[0] == m_character.GetComponent<S_Character>().m_currentTile)
+                {
+                    parent.parent.SetData("path", new List<S_Tile>());
+                    return NodeState.SUCCESS;
+                }
                 state = NodeState.SUCCESS;
                 break;
             }
