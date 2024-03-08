@@ -1763,10 +1763,6 @@ PrefabInstance:
       propertyPath: m_characters.Array.data[3]
       value: 
       objectReference: {fileID: 1749556207}
-    - target: {fileID: 2250443661808576900, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
-      propertyPath: m_maxTime
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1300287858386786648, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
       propertyPath: m_WallSprites.Array.data[0]
       value: 
@@ -1807,6 +1803,10 @@ PrefabInstance:
       propertyPath: m_DestructableWallSprite.Array.data[2]
       value: 
       objectReference: {fileID: 21300000, guid: b893b61aba7d75948abde91f62a4528c, type: 3}
+    - target: {fileID: 2250443661808576900, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
+      propertyPath: m_maxTime
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4604304268364013500, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
       propertyPath: m_Name
       value: PB_Managers
@@ -1902,7 +1902,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: aaaaaaaa
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

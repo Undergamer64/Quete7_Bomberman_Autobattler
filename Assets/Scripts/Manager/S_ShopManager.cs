@@ -87,7 +87,9 @@ public class S_ShopManager : MonoBehaviour
             //temp
             ChangeButtonsEvent(false);
 
-            ResetGrid();
+            S_RoundManager.Instance.ChangeTimerState(true);
+            Time.timeScale = 1.0f;
+            //S_GridManager.Instance.ResetGrid();
         }
     }
 
@@ -97,7 +99,9 @@ public class S_ShopManager : MonoBehaviour
 
         //temp
         ChangeButtonsEvent(false);
-        ResetGrid();
+        S_RoundManager.Instance.ChangeTimerState(true);
+        Time.timeScale = 1.0f;
+        //S_GridManager.Instance.ResetGrid();
     }
 
     bool NbTrapUpgrade(S_Character character)
@@ -163,19 +167,5 @@ public class S_ShopManager : MonoBehaviour
             }
         }
         return false;
-    }
-
-    void ResetGrid()
-    {
-        /*
-        while (S_GridManager.Instance.gameObject.transform.childCount > 0)
-        {
-            Destroy(S_GridManager.Instance.gameObject.transform.GetChild(0));
-        }
-        S_GridManager.Instance.GenerateGrid();
-        */
-
-        S_RoundManager.Instance.ChangeTimerState(true);
-        Time.timeScale = 1.0f;
     }
 }
