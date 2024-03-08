@@ -24,6 +24,8 @@ public class S_Character : MonoBehaviour
     [SerializeField]
     private bool m_canTakeDamage = true;
     private int m_lives;
+    public int m_BombRange;
+    public int m_BombPerforation;
 
     private S_Tile tempoTile;
     public int m_NbOfBombs = 1;
@@ -34,6 +36,8 @@ public class S_Character : MonoBehaviour
         m_timeToWait = m_stats.m_Speed;
         m_NbOfBombs = m_stats.m_nbTraps;
         m_lives = m_stats.m_Lives;
+        m_BombRange = m_stats.m_Range;
+        m_BombPerforation = m_stats.m_Perforation;
     }
 
     public IEnumerator Invulnerability()

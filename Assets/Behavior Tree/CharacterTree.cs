@@ -21,13 +21,22 @@ public class CharacterTree : BehaviorTree.Tree
                 new MoveTo(m_Character)
                 }
             ),
-            new Sequence(new List<Node> 
+            //Offensif
+            new Selector(new List<Node> 
                 {
-                new OffensifCheckNode(), 
-                new OffesifNode()
+                new Sequence(new List<Node>
+                {
+                    new CheckForPlayers(m_Character),
+                    new PlaceBomb(m_Character)
+                }),
+                new Sequence(new List<Node>
+                {
+                    new FindClosestIA(m_GridManager, m_Character),
+                    new MoveTo(m_Character)
+                })
                 }
             ),
-            //neutral
+            //Neutral
             new Selector(
                 new List<Node>
                 {
