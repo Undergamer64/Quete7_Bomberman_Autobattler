@@ -1402,6 +1402,7 @@ GameObject:
   - component: {fileID: 785644902}
   - component: {fileID: 785644904}
   - component: {fileID: 785644903}
+  - component: {fileID: 785644905}
   m_Layer: 5
   m_Name: lives
   m_TagString: Untagged
@@ -1449,7 +1450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d122064367526214bb0f0d4f608400ce, type: 3}
+  m_Sprite: {fileID: -635794940, guid: 25682004fd395b04387b64f3d463e476, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1467,6 +1468,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785644901}
   m_CullTransparentMesh: 1
+--- !u!95 &785644905
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785644901}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e83f42f0d1725514490264802a8ebce5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &818355951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3715819298022460259, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
@@ -1763,10 +1785,6 @@ PrefabInstance:
       propertyPath: m_characters.Array.data[3]
       value: 
       objectReference: {fileID: 1749556207}
-    - target: {fileID: 2250443661808576900, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
-      propertyPath: m_maxTime
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1300287858386786648, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
       propertyPath: m_WallSprites.Array.data[0]
       value: 
@@ -1807,6 +1825,10 @@ PrefabInstance:
       propertyPath: m_DestructableWallSprite.Array.data[2]
       value: 
       objectReference: {fileID: 21300000, guid: b893b61aba7d75948abde91f62a4528c, type: 3}
+    - target: {fileID: 2250443661808576900, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
+      propertyPath: m_maxTime
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4604304268364013500, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
       propertyPath: m_Name
       value: PB_Managers
