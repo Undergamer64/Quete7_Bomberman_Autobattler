@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3f30064afef84bf49ae64255c230ce35
+guid: 5081532ff0f2a8a48a10a705bfabb55a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,9 +48,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 512
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -107,19 +107,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -136,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MainMenuBackground_0
+      name: main menu_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6102813225b7404a9354297694ed2f7
-      internalID: -264297852
+      spriteID: afa35ca4819f6274c92534b722989612
+      internalID: 1507529732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MainMenuBackground_1
+      name: main menu_1
       rect:
         serializedVersion: 2
         x: 1920
@@ -171,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35cc0e6ddbec7594093224042d1fe42a
-      internalID: -2137727944
+      spriteID: fb5cac59632914845873caae308705ee
+      internalID: 1206034039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MainMenuBackground_2
+      name: main menu_2
       rect:
         serializedVersion: 2
         x: 3840
@@ -192,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dab9525b8b96443458e5d005bd1dabf8
-      internalID: 1939710467
+      spriteID: 3eb2c2381fd9cf94b9ceb45166524cba
+      internalID: -1696442553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MainMenuBackground_3
+      name: main menu_3
       rect:
         serializedVersion: 2
         x: 5760
@@ -213,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0264b502e7d0464080c9aaae51e74a5
-      internalID: -1313960739
+      spriteID: b9fda171008caf543b8ebc103cb214c3
+      internalID: -1182189917
       vertices: []
       indices: 
       edges: []
@@ -230,10 +217,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MainMenuBackground_0: -264297852
-      MainMenuBackground_1: -2137727944
-      MainMenuBackground_2: 1939710467
-      MainMenuBackground_3: -1313960739
+      main menu_0: 1507529732
+      main menu_1: 1206034039
+      main menu_2: -1696442553
+      main menu_3: -1182189917
+      main menu_4: 529080317
+      main menu_5: -1729873064
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
