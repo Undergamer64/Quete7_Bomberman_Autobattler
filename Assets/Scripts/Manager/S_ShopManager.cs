@@ -113,8 +113,9 @@ public class S_ShopManager : MonoBehaviour
     public void ShopClosed()
     {
         m_shop.SetActive(false);
+        S_GridManager.Instance.ResetGrid();
         S_RoundManager.Instance.ChangeTimerState(true);
-        //S_GridManager.Instance.ResetGrid();
+        
     }
 
 
