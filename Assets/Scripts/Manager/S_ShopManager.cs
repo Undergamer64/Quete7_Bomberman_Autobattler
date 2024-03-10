@@ -53,6 +53,12 @@ public class S_ShopManager : MonoBehaviour
     {
         ChooseUpgrade();
         m_shop.SetActive(true);
+        int nbBomb=S_GridManager.Instance.m_ListOfBombs.transform.childCount;
+        for (int i = nbBomb; i <0; i--) 
+        {
+            Destroy(S_GridManager.Instance.m_ListOfBombs.transform.GetChild(i).gameObject);
+        }
+        
     }
 
     public void ChooseUpgrade()
