@@ -293,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: -375}
+  m_AnchoredPosition: {x: -300, y: -400}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72177546
@@ -426,7 +426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -375}
+  m_AnchoredPosition: {x: 0, y: -400}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &197904360
@@ -559,7 +559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: -375}
+  m_AnchoredPosition: {x: 300, y: -400}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235843638
@@ -2205,7 +2205,7 @@ PrefabInstance:
       objectReference: {fileID: 924346423}
     - target: {fileID: 2250443661808576900, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
       propertyPath: m_maxTime
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2250443661808576900, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
       propertyPath: m_minutes
@@ -2239,26 +2239,6 @@ PrefabInstance:
       propertyPath: m_buttons.Array.data[2]
       value: 
       objectReference: {fileID: 235843636}
-    - target: {fileID: 8721692149616032652, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
-      propertyPath: m_listCharacters.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8721692149616032652, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
-      propertyPath: m_listCharacters.Array.data[0]
-      value: 
-      objectReference: {fileID: 1545922800}
-    - target: {fileID: 8721692149616032652, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
-      propertyPath: m_listCharacters.Array.data[1]
-      value: 
-      objectReference: {fileID: 818355951}
-    - target: {fileID: 8721692149616032652, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
-      propertyPath: m_listCharacters.Array.data[2]
-      value: 
-      objectReference: {fileID: 1921619519}
-    - target: {fileID: 8721692149616032652, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
-      propertyPath: m_listCharacters.Array.data[3]
-      value: 
-      objectReference: {fileID: 1749556207}
     - target: {fileID: 9076057932031166294, guid: 754a843cc0cf8ed40adbc293abbed143, type: 3}
       propertyPath: m_IsActive
       value: 1
