@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Timer: 0
-  m_maxTime: 5
 --- !u!1 &4604304268364013500
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,18 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399d2691c6155854e98c4539ea5f90e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_skipButton: {fileID: 0}
+  m_buttons: []
   m_character: {fileID: 0}
-  m_upgradeSprites:
-  - {fileID: 21300000, guid: 6542e15d99292b8438990dddc539d39e, type: 3}
-  - {fileID: 21300000, guid: 3927c611852ba5f49a4bf6d86621a64f, type: 3}
-  - {fileID: 21300000, guid: bb09d4f37e21c1640a2c1afc604c94fb, type: 3}
-  - {fileID: 21300000, guid: f992af5c2abe7ef47931110004c0ca51, type: 3}
-  - {fileID: 21300000, guid: 22e8d39e06f195942825334ff9aa8420, type: 3}
 --- !u!1001 &393489270505341586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,46 +133,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 153665546030318094}
     m_Modifications:
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_WallSprites.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_WallSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 2576c76d58d6a0149ad6f6a88e5b2d52, type: 3}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_WallSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 8f8c0e43b4bf3714bac18e0857a4b361, type: 3}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_WallSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: 1c621a8004c68b04e92dd73f58be3ceb, type: 3}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_WallSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 272fd362faf623243910573184463064, type: 3}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_WallSprites.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: bd70ea91dde3d5c42abdb8e8519e5089, type: 3}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_WallSprites.Array.data[5]
-      value: 
-      objectReference: {fileID: 21300000, guid: 69719860f542ab145905264eeeebf7a1, type: 3}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_DestructableWallSprite.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 2564432ce72d1424cac4b8da99c200a4, type: 3}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_DestructableWallSprite.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: d816c9d77fd22c04fb33d4b254523d28, type: 3}
-    - target: {fileID: 1692923014502669258, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
-      propertyPath: m_DestructableWallSprite.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: b893b61aba7d75948abde91f62a4528c, type: 3}
     - target: {fileID: 2402026923276551410, guid: 60b5a566daa5bb2478175abb458c01db, type: 3}
       propertyPath: m_Name
       value: PB_GridManager
