@@ -118,6 +118,51 @@ public class S_GridManager : MonoBehaviour
 
     public void ResetGrid()
     {
+        //Spawn Characters
+        S_Tile spawntile = m_GridList[1][1];
+        if (m_characters[0] != null)
+        {
+            m_characters[0].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
+            m_characters[0].GetComponent<S_Character>().m_currentTile.m_Character = null;
+            m_characters[0].GetComponent<S_Character>().m_currentTile = spawntile;
+            m_characters[0].GetComponent<S_Character>().m_currentTile.m_IsWalkable = false;
+            m_characters[0].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+            spawntile.m_Character = m_characters[0].GetComponent<S_Character>();
+        }
+
+        if (m_characters[1] != null)
+        {
+            spawntile = m_GridList[1][11];
+            m_characters[1].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
+            m_characters[1].GetComponent<S_Character>().m_currentTile.m_Character = null;
+            m_characters[1].GetComponent<S_Character>().m_currentTile = spawntile;
+            m_characters[1].GetComponent<S_Character>().m_currentTile.m_IsWalkable = false;
+            m_characters[1].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+            spawntile.m_Character = m_characters[1].GetComponent<S_Character>();
+        }
+
+        if (m_characters[2] != null)
+        {
+            spawntile = m_GridList[15][1];
+            m_characters[2].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
+            m_characters[2].GetComponent<S_Character>().m_currentTile.m_Character = null;
+            m_characters[2].GetComponent<S_Character>().m_currentTile = spawntile;
+            m_characters[2].GetComponent<S_Character>().m_currentTile.m_IsWalkable = false;
+            m_characters[2].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+            spawntile.m_Character = m_characters[2].GetComponent<S_Character>();
+        }
+
+        if (m_characters[3] != null)
+        {
+            spawntile = m_GridList[15][11];
+            m_characters[3].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
+            m_characters[3].GetComponent<S_Character>().m_currentTile.m_Character = null;
+            m_characters[3].GetComponent<S_Character>().m_currentTile = spawntile;
+            m_characters[3].GetComponent<S_Character>().m_currentTile.m_IsWalkable = false;
+            m_characters[3].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+            spawntile.m_Character = m_characters[3].GetComponent<S_Character>();
+        }
+
         for (int x = 0; x < m_Width; x++)
         {
             for (int y = 0; y < m_Height; y++)
@@ -161,40 +206,6 @@ public class S_GridManager : MonoBehaviour
                 }
             }
         }
-        //Spawn Characters
-        S_Tile spawntile = m_GridList[1][1];
-        m_characters[0].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
-        m_characters[0].GetComponent<S_Character>().m_currentTile.m_Character = null;
-        m_characters[0].GetComponent<S_Character>().m_currentTile = spawntile;
-        m_characters[0].GetComponent<S_Character>().m_currentTile.m_IsWalkable = false;
-        m_characters[0].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
-        spawntile.m_Character = m_characters[0].GetComponent<S_Character>();
-
-        spawntile = m_GridList[1][11];
-        m_characters[1].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
-        m_characters[1].GetComponent<S_Character>().m_currentTile.m_Character = null;
-        m_characters[1].GetComponent<S_Character>().m_currentTile = spawntile;
-        m_characters[1].GetComponent<S_Character>().m_currentTile.m_IsWalkable = false;
-        m_characters[1].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
-        spawntile.m_Character = m_characters[1].GetComponent<S_Character>();
-
-        spawntile = m_GridList[15][1];
-        m_characters[2].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
-        m_characters[2].GetComponent<S_Character>().m_currentTile.m_Character = null;
-        m_characters[2].GetComponent<S_Character>().m_currentTile = spawntile;
-        m_characters[2].GetComponent<S_Character>().m_currentTile.m_IsWalkable = false;
-        m_characters[2].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
-        spawntile.m_Character = m_characters[2].GetComponent<S_Character>();
-
-        spawntile = m_GridList[15][11];
-        m_characters[3].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
-        m_characters[3].GetComponent<S_Character>().m_currentTile.m_Character = null;
-        m_characters[3].GetComponent<S_Character>().m_currentTile = spawntile;
-        m_characters[3].GetComponent<S_Character>().m_currentTile.m_IsWalkable = false;
-        m_characters[3].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
-        spawntile.m_Character = m_characters[3].GetComponent<S_Character>();
-
-        
 
         S_RoundManager.Instance.ChangeTimerState(true);
         Time.timeScale = 1.0f;
