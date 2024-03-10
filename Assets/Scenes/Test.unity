@@ -1248,6 +1248,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2103217334}
     - target: {fileID: 1859092866110449042, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
+      propertyPath: m_coins
+      value: 
+      objectReference: {fileID: 1124646702}
+    - target: {fileID: 1859092866110449042, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
       propertyPath: m_listOfBombs
       value: 
       objectReference: {fileID: 1701116108}
@@ -2040,7 +2044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 0 Coins
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

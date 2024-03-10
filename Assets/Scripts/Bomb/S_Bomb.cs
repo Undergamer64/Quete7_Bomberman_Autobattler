@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class S_Bomb : MonoBehaviour
@@ -10,7 +11,7 @@ public class S_Bomb : MonoBehaviour
     public int m_Perforation;
     public int m_MaxPerforation;
     private bool m_encounterObstacle = false;
-    
+
     [SerializeField] 
     private GameObject m_PrefabExplosion;
 
@@ -36,7 +37,7 @@ public class S_Bomb : MonoBehaviour
             {
                 if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
                 {
-                    m_Character.coins += Random.Range(1, 3);
+                    m_Character.GainCoin();
                 }
 
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].ChangeTag("Untagged");
@@ -82,9 +83,9 @@ public class S_Bomb : MonoBehaviour
         {
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].CompareTag("Destructable"))
             {
-                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
+                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
                 {
-                    m_Character.coins += Random.Range(1, 3);
+                    m_Character.GainCoin();
                 }
 
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].ChangeTag("Untagged");
@@ -130,9 +131,9 @@ public class S_Bomb : MonoBehaviour
         {
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].CompareTag("Destructable"))
             {
-                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
+                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
                 {
-                    m_Character.coins += Random.Range(1, 3);
+                    m_Character.GainCoin();
                 }
 
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].ChangeTag("Untagged");
@@ -178,9 +179,9 @@ public class S_Bomb : MonoBehaviour
         {
             if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].CompareTag("Destructable"))
             {
-                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
+                if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
                 {
-                    m_Character.coins += Random.Range(1, 3);
+                    m_Character.GainCoin();
                 }
 
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].ChangeTag("Untagged");

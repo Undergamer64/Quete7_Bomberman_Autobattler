@@ -124,6 +124,8 @@ public class S_ShopManager : MonoBehaviour
         if (character.coins >= 5)
         {
             character.m_NbOfBombs++;
+            character.coins -= 5;
+            character.UpdateCoinDisplay();
             return true;
         }
         else
@@ -137,6 +139,8 @@ public class S_ShopManager : MonoBehaviour
         if (character.coins >= 5)
         {
             character.m_BombRange++;
+            character.coins -= 5;
+            character.UpdateCoinDisplay();
             return true;
         }
         else
@@ -150,6 +154,8 @@ public class S_ShopManager : MonoBehaviour
         if (character.coins >= 10)
         {
             character.m_BombPerforation++;
+            character.coins -= 10;
+            character.UpdateCoinDisplay();
             return true;
         }
         else
@@ -165,6 +171,8 @@ public class S_ShopManager : MonoBehaviour
             if (m_character.coins >= 10)
             {
                 character.m_lives++;
+                character.coins -= 10;
+                character.UpdateCoinDisplay();
                 return true;
             }
         }
@@ -178,6 +186,8 @@ public class S_ShopManager : MonoBehaviour
             if (character.coins >= 10)
             {
                 character.m_speed /= 2f;
+                character.coins -= 10;
+                character.UpdateCoinDisplay();
                 return true;
             }
         }
