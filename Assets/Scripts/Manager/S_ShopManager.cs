@@ -21,6 +21,9 @@ public class S_ShopManager : MonoBehaviour
     [SerializeField]
     private S_Character m_character;
 
+    [SerializeField]
+    private List<Sprite> m_upgradeSprites;
+
     delegate bool ApplyUpgrade(S_Character character);
 
     private List<ApplyUpgrade> m_upgrades = new ();
@@ -56,8 +59,9 @@ public class S_ShopManager : MonoBehaviour
     {
         for (int i = 0; i < m_buttons.Count; i++)
         {
-            int randomUpgrade = UnityEngine.Random.Range(0, m_upgrades.Count-1);
+            int randomUpgrade = UnityEngine.Random.Range(0, m_upgrades.Count);
             m_upgradesInShop.Add(m_upgrades[randomUpgrade]);
+            m_buttons[i].GetComponent<Image>().sprite = m_upgradeSprites[randomUpgrade];
         }
         //DO IA HERE
 
@@ -83,6 +87,7 @@ public class S_ShopManager : MonoBehaviour
 
     public void Upgrade(int upgradeIndex)
     {
+        bool success = false;
         if (upgradeIndex >= 0 && upgradeIndex <= m_buttons.Count-1)
         {
             success = m_upgradesInShop[upgradeIndex](m_character);
@@ -95,6 +100,10 @@ public class S_ShopManager : MonoBehaviour
 
             m_shop.GetComponent<Animator>().SetTrigger("CloseShop");
         }
+    }
+
+    public void Skip()
+    {
         m_upgradesInShop.Clear();
         ChangeButtons(false);
 
