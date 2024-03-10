@@ -53,6 +53,12 @@ public class S_ShopManager : MonoBehaviour
     {
         ChooseUpgrade();
         m_shop.SetActive(true);
+        int nbBomb=S_GridManager.Instance.m_ListOfBombs.transform.childCount;
+        for (int i = nbBomb; i <0; i--) 
+        {
+            Destroy(S_GridManager.Instance.m_ListOfBombs.transform.GetChild(i).gameObject);
+        }
+        
     }
 
     public void ChooseUpgrade()
@@ -113,8 +119,9 @@ public class S_ShopManager : MonoBehaviour
     public void ShopClosed()
     {
         m_shop.SetActive(false);
+        S_GridManager.Instance.ResetGrid();
         S_RoundManager.Instance.ChangeTimerState(true);
-        //S_GridManager.Instance.ResetGrid();
+        
     }
 
 
@@ -123,6 +130,8 @@ public class S_ShopManager : MonoBehaviour
         if (character.coins >= 5)
         {
             character.m_NbOfBombs++;
+            character.coins -= 5;
+            character.UpdateCoinDisplay();
             return true;
         }
         else
@@ -136,6 +145,8 @@ public class S_ShopManager : MonoBehaviour
         if (character.coins >= 5)
         {
             character.m_BombRange++;
+            character.coins -= 5;
+            character.UpdateCoinDisplay();
             return true;
         }
         else
@@ -149,6 +160,8 @@ public class S_ShopManager : MonoBehaviour
         if (character.coins >= 10)
         {
             character.m_BombPerforation++;
+            character.coins -= 10;
+            character.UpdateCoinDisplay();
             return true;
         }
         else
@@ -164,6 +177,8 @@ public class S_ShopManager : MonoBehaviour
             if (m_character.coins >= 10)
             {
                 character.m_lives++;
+                character.coins -= 10;
+                character.UpdateCoinDisplay();
                 return true;
             }
         }
@@ -177,6 +192,8 @@ public class S_ShopManager : MonoBehaviour
             if (character.coins >= 10)
             {
                 character.m_speed /= 2f;
+                character.coins -= 10;
+                character.UpdateCoinDisplay();
                 return true;
             }
         }

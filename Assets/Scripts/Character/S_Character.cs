@@ -27,6 +27,9 @@ public class S_Character : MonoBehaviour
     private TextMeshProUGUI lives;
 
     [SerializeField]
+    private TextMeshProUGUI m_coins;
+
+    [SerializeField]
     private bool m_canTakeDamage = true;
     public int m_lives;
     public int m_BombRange;
@@ -125,8 +128,8 @@ public class S_Character : MonoBehaviour
         {
             m_NbOfBombs -= 1;
             GameObject bomb = Instantiate(m_bombPrefab, transform.position, Quaternion.identity, m_listOfBombs.transform);
-            bomb.GetComponent<S_Bomb>().m_Range = m_stats.m_Range;
-            bomb.GetComponent<S_Bomb>().m_MaxPerforation = m_stats.m_Perforation;
+            bomb.GetComponent<S_Bomb>().m_Range = m_BombRange;
+            bomb.GetComponent<S_Bomb>().m_MaxPerforation = m_BombPerforation;
             bomb.GetComponent<S_Bomb>().m_Tile = m_currentTile;
             bomb.GetComponent<S_Bomb>().m_Tile.m_IsWalkable = false;
             bomb.GetComponent<S_Bomb>().m_Character = this;
@@ -144,8 +147,10 @@ public class S_Character : MonoBehaviour
             m_canTakeDamage = false;
             m_lives--;
 
-            if (gameObject.transform== gameObject.transform.parent.transform.GetChild(0))
-            lives.text=m_lives.ToString()+" left";
+            if (gameObject.transform == gameObject.transform.parent.transform.GetChild(0))
+            {
+                lives.text = m_lives.ToString() + " left";
+            }
 
             if (m_lives <= 0)
             {
@@ -156,5 +161,19 @@ public class S_Character : MonoBehaviour
                 StartCoroutine(Invulnerability());
             }
         }
+    }
+
+    public void GainCoin()
+    {
+        coins += Random.Range(1, 3);
+        if (gameObject.transform == gameObject.transform.parent.transform.GetChild(0))
+        {
+            UpdateCoinDisplay();
+        }
+    }
+
+    public void UpdateCoinDisplay()
+    {
+        m_coins.text = coins.ToString() + " coins";
     }
 }
