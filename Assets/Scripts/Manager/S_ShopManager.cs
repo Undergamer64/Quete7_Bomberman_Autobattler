@@ -13,6 +13,12 @@ public class S_ShopManager : MonoBehaviour
     private List<GameObject> m_buttons;
 
     [SerializeField]
+    private GameObject m_skipButton;
+
+    [SerializeField]
+    private GameObject m_shop;
+
+    [SerializeField]
     private S_Character m_character;
 
     delegate bool ApplyUpgrade(S_Character character);
@@ -40,27 +46,38 @@ public class S_ShopManager : MonoBehaviour
 
 
 
-    public void OpenShop()
+    public void OpenShop() //triggers the animation
     {
-        //Play animation here
+        ChooseUpgrade();
+        m_shop.SetActive(true);
+    }
 
-        Time.timeScale = 0;
-        for (int i = 0; i < m_buttons.Count-1; i++)
+    public void ChooseUpgrade()
+    {
+        for (int i = 0; i < m_buttons.Count; i++)
         {
             int randomUpgrade = UnityEngine.Random.Range(0, m_upgrades.Count-1);
             m_upgradesInShop.Add(m_upgrades[randomUpgrade]);
         }
+        //DO IA HERE
 
-        //temp
-        ChangeButtonsEvent(true);
     }
 
-    public void ChangeButtonsEvent(bool state)
+    public void ChangeButtons(bool state) //used as an event for the animator
     {
-        //for the animator
         for (int i = 0;i < m_buttons.Count; i++)
         {
             m_buttons[i].SetActive(state);
+        }
+        m_skipButton.SetActive(state);
+
+        if (state)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
         }
     }
 
@@ -68,14 +85,29 @@ public class S_ShopManager : MonoBehaviour
     {
         if (upgradeIndex >= 0 && upgradeIndex <= m_buttons.Count-1)
         {
-            m_upgradesInShop[upgradeIndex](m_character);
+            success = m_upgradesInShop[upgradeIndex](m_character);
+        }
+
+        if (success)
+        {
+            m_upgradesInShop.Clear();
+            ChangeButtons(false);
+
+            m_shop.GetComponent<Animator>().SetTrigger("CloseShop");
         }
         m_upgradesInShop.Clear();
+        ChangeButtons(false);
 
-        //temp
-        ChangeButtonsEvent(false);
-        Time.timeScale = 1.0f;
+        m_shop.GetComponent<Animator>().SetTrigger("CloseShop");
     }
+
+    public void ShopClosed()
+    {
+        m_shop.SetActive(false);
+        S_RoundManager.Instance.ChangeTimerState(true);
+        //S_GridManager.Instance.ResetGrid();
+    }
+
 
     bool NbTrapUpgrade(S_Character character)
     {

@@ -35,7 +35,7 @@ public class S_GridManager : MonoBehaviour
     }
 
     // Generate the grid
-    void GenerateGrid()
+    private void GenerateGrid()
     {
         m_tilesDictionary = new Dictionary<Vector2, S_Tile>();
 
@@ -114,6 +114,81 @@ public class S_GridManager : MonoBehaviour
 
         Camera.main.transform.position = new Vector3(m_Width / 2, m_Height / 2, -10);
         Camera.main.orthographicSize = 7;
+    }
+
+    public void ResetGrid()
+    {
+        //Spawn Characters
+        S_Tile spawntile = m_GridList[1][1];
+        m_characters[0].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
+        m_characters[0].GetComponent<S_Character>().m_currentTile = spawntile;
+        m_characters[0].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+        spawntile.m_Character = m_characters[0].GetComponent<S_Character>();
+
+        spawntile = m_GridList[1][11];
+        m_characters[0].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
+        m_characters[1].GetComponent<S_Character>().m_currentTile = spawntile;
+        m_characters[1].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+        spawntile.m_Character = m_characters[1].GetComponent<S_Character>();
+
+        spawntile = m_GridList[15][1];
+        m_characters[0].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
+        m_characters[2].GetComponent<S_Character>().m_currentTile = spawntile;
+        m_characters[2].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+        spawntile.m_Character = m_characters[2].GetComponent<S_Character>();
+
+        spawntile = m_GridList[15][11];
+        m_characters[0].GetComponent<S_Character>().m_currentTile.m_IsWalkable = true;
+        m_characters[3].GetComponent<S_Character>().m_currentTile = spawntile;
+        m_characters[3].transform.position = new Vector3(spawntile.m_TileX, spawntile.m_TileY, -1);
+        spawntile.m_Character = m_characters[3].GetComponent<S_Character>();
+
+        for (int x = 0; x < m_Width; x++)
+        {
+            for (int y = 0; y < m_Height; y++)
+            {
+                //Placement of Destructable Walls
+                if ((x % 2 == 0) || (y % 2 == 0))
+                {
+                    m_GridList[x][y].tag = "Destructable";
+                    m_GridList[x][y].m_IsWalkable = false;
+                    m_GridList[x][y].GetComponent<SpriteRenderer>().sprite = m_DestructableWallSprite[Random.Range(0, m_DestructableWallSprite.Count)];
+                }
+
+                //Placement of the Walls :
+                //edge
+                if (x == 0 || x == 16 || y == 12 || y == 0)
+                {
+                    m_GridList[x][y].tag = "Wall";
+                    m_GridList[x][y].m_IsWalkable = false;
+                    m_GridList[x][y].GetComponent<SpriteRenderer>().sprite = m_WallSprites[Random.Range(0, 4)];
+                }
+                //grid Wall
+                if ((x >= 2 && y >= 2) && (x <= 14 && y <= 10))
+                {
+                    if ((x % 2 == 0) && (y % 2 == 0))
+                    {
+                        m_GridList[x][y].tag = "Wall";
+                        m_GridList[x][y].m_IsWalkable = false;
+                        m_GridList[x][y].GetComponent<SpriteRenderer>().sprite = m_WallSprites[Random.Range(0, m_WallSprites.Count)];
+                    }
+                }
+
+                //Replace Destructable Walls on spawn
+                if ((x == 1 && (y == 2 || y == 10)) ||
+                    (x == 2 && (y == 1 || y == 11)) ||
+                    (x == 14 && (y == 1 || y == 11)) ||
+                    (x == 15 && (y == 2 || y == 10)))
+                {
+                    m_GridList[x][y].tag = "Untagged";
+                    m_GridList[x][y].m_IsWalkable = true;
+                    m_GridList[x][y].GetComponent<SpriteRenderer>().sprite = m_TileSprite;
+                }
+            }
+        }
+
+        S_RoundManager.Instance.ChangeTimerState(true);
+        Time.timeScale = 1.0f;
     }
 
     public void UpdateDanger()
