@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +24,12 @@ public class S_ShopManager : MonoBehaviour
     private S_Character m_character;
 
     [SerializeField]
+    private List<GameObject> m_listCharacters;
+
+    [SerializeField]
     private List<Sprite> m_upgradeSprites;
+
+    private List<int> m_prices = new List<int>();
 
     delegate bool ApplyUpgrade(S_Character character);
 
@@ -40,25 +47,28 @@ public class S_ShopManager : MonoBehaviour
     private void Start()
     {
         m_upgrades.Add(NbTrapUpgrade);
+        m_prices.Add(5);
         m_upgrades.Add(TrapRangeUpgrade);
+        m_prices.Add(5);
         m_upgrades.Add(TrapPerforationUpgrade);
+        m_prices.Add(10);
         m_upgrades.Add(LivesUpgrade);
+        m_prices.Add(10);
         m_upgrades.Add(SpeedUpgrade);
-
+        m_prices.Add(10);
     }
 
 
 
     public void OpenShop() //triggers the animation
     {
-        ChooseUpgrade();
-        m_shop.SetActive(true);
-        int nbBomb=S_GridManager.Instance.m_ListOfBombs.transform.childCount;
-        for (int i = nbBomb; i <0; i--) 
+        int nbBomb = S_GridManager.Instance.m_ListOfBombs.transform.childCount;
+        for (int i = nbBomb; i < 0; i--)
         {
             Destroy(S_GridManager.Instance.m_ListOfBombs.transform.GetChild(i).gameObject);
         }
-        
+        ChooseUpgrade();
+        m_shop.SetActive(true);
     }
 
     public void ChooseUpgrade()
@@ -68,9 +78,28 @@ public class S_ShopManager : MonoBehaviour
             int randomUpgrade = UnityEngine.Random.Range(0, m_upgrades.Count);
             m_upgradesInShop.Add(m_upgrades[randomUpgrade]);
             m_buttons[i].GetComponent<Image>().sprite = m_upgradeSprites[randomUpgrade];
+            m_buttons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_prices[randomUpgrade].ToString() + " £";
         }
-        //DO IA HERE
 
+        foreach (GameObject character in m_listCharacters.Where(x => x.transform.parent.transform.GetChild(0) != x.transform))
+        {
+            if (character != null)
+            {
+                int randomUpgrade = UnityEngine.Random.Range(0, m_buttons.Count);
+                bool success = m_upgradesInShop[randomUpgrade](character.GetComponent<S_Character>());
+                int max_upgrades = 2;
+                while (!success && max_upgrades > 0)
+                {
+                    max_upgrades--;
+                    randomUpgrade++;
+                    if (randomUpgrade >= 3)
+                    {
+                        randomUpgrade = 0;
+                    }
+                    success = m_upgradesInShop[randomUpgrade](character.GetComponent<S_Character>());
+                }
+            }
+        }
     }
 
     public void ChangeButtons(bool state) //used as an event for the animator
@@ -119,7 +148,17 @@ public class S_ShopManager : MonoBehaviour
     public void ShopClosed()
     {
         m_shop.SetActive(false);
+        int nbBomb = S_GridManager.Instance.m_ListOfBombs.transform.childCount;
+        for (int i = nbBomb; i < 0; i--)
+        {
+            Destroy(S_GridManager.Instance.m_ListOfBombs.transform.GetChild(i).gameObject);
+        }
         S_GridManager.Instance.ResetGrid();
+        nbBomb = S_GridManager.Instance.m_ListOfBombs.transform.childCount;
+        for (int i = nbBomb; i < 0; i--)
+        {
+            Destroy(S_GridManager.Instance.m_ListOfBombs.transform.GetChild(i).gameObject);
+        }
         S_RoundManager.Instance.ChangeTimerState(true);
         
     }
@@ -131,7 +170,10 @@ public class S_ShopManager : MonoBehaviour
         {
             character.m_NbOfBombs++;
             character.coins -= 5;
-            character.UpdateCoinDisplay();
+            if (character == m_character)
+            {
+                character.UpdateCoinDisplay();
+            }
             return true;
         }
         else
@@ -146,7 +188,10 @@ public class S_ShopManager : MonoBehaviour
         {
             character.m_BombRange++;
             character.coins -= 5;
-            character.UpdateCoinDisplay();
+            if (character == m_character)
+            {
+                character.UpdateCoinDisplay();
+            }
             return true;
         }
         else
@@ -161,7 +206,10 @@ public class S_ShopManager : MonoBehaviour
         {
             character.m_BombPerforation++;
             character.coins -= 10;
-            character.UpdateCoinDisplay();
+            if (character == m_character)
+            {
+                character.UpdateCoinDisplay();
+            }
             return true;
         }
         else
@@ -178,7 +226,10 @@ public class S_ShopManager : MonoBehaviour
             {
                 character.m_lives++;
                 character.coins -= 10;
-                character.UpdateCoinDisplay();
+                if (character == m_character)
+                {
+                    character.UpdateCoinDisplay();
+                }
                 return true;
             }
         }
@@ -193,7 +244,10 @@ public class S_ShopManager : MonoBehaviour
             {
                 character.m_speed /= 2f;
                 character.coins -= 10;
-                character.UpdateCoinDisplay();
+                if (character == m_character)
+                {
+                    character.UpdateCoinDisplay();
+                }
                 return true;
             }
         }

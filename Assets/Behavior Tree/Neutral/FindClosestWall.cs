@@ -33,7 +33,7 @@ public class FindClosestWall : Node
         {
             distance.m_Dist = m_pathfinding.CalculateDistance(distance, m_character.GetComponent<S_Character>().m_currentTile);
         }
-        dist=dist.OrderBy(x => x.m_Dist).ToList();
+        dist = dist.OrderBy(x => x.m_Dist).ToList();
         List<S_Tile> path = null;
          foreach (S_Tile wall in dist)
         {
