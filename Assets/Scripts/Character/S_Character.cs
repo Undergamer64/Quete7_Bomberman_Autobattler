@@ -30,6 +30,12 @@ public class S_Character : MonoBehaviour
     private TextMeshProUGUI m_coins;
 
     [SerializeField]
+    private GameObject m_PBCoin;
+
+    [SerializeField]
+    private GameObject m_CanvasCoin;
+
+    [SerializeField]
     private bool m_canTakeDamage = true;
     public int m_lives;
     public int m_BombRange;
@@ -168,6 +174,7 @@ public class S_Character : MonoBehaviour
         coins += Random.Range(1, 3);
         if (gameObject.transform == gameObject.transform.parent.transform.GetChild(0))
         {
+            Instantiate(m_PBCoin, new Vector3(160,1000 + Random.Range(1,201), 0), Quaternion.identity, m_CanvasCoin.transform);
             UpdateCoinDisplay();
         }
     }
