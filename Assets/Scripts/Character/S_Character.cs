@@ -64,9 +64,18 @@ public class S_Character : MonoBehaviour
     public IEnumerator Temporisation()
     {
         m_canMove = false;
-        yield return new WaitForSeconds(m_speed);
-        yield return new WaitForSeconds(Random.Range(0,0.2f));
-        transform.position= new Vector3(tempoTile.m_TileX, tempoTile.m_TileY, -1);
+        float time = 0;
+        while (true)
+        {
+            if(Vector2.Distance(transform.position,new Vector3(tempoTile.m_TileX, tempoTile.m_TileY, -1)) < 0.1f)
+            {
+                break;
+            }
+            transform.position = Vector3.Lerp(transform.position, new Vector3(tempoTile.m_TileX, tempoTile.m_TileY, -1), Time.deltaTime * (10 - m_speed));
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime*m_speed;
+        }
+
         tempoTile = null;
         m_canMove = true;
     }
@@ -102,7 +111,7 @@ public class S_Character : MonoBehaviour
         }
         else 
         {
-            transform.position=Vector3.Lerp(transform.position, new Vector3(tempoTile.m_TileX, tempoTile.m_TileY, -1), Time.deltaTime*(10-m_speed));
+            
         }
         return true;
     }
