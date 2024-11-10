@@ -1,6 +1,8 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 
 public class S_Character : MonoBehaviour
@@ -10,9 +12,6 @@ public class S_Character : MonoBehaviour
 
     [SerializeField]
     private S_CharacterStats m_stats;
-
-    [SerializeField]
-    private GameObject m_playerList;
 
     [SerializeField]
     private GameObject m_bombPrefab;
@@ -127,7 +126,38 @@ public class S_Character : MonoBehaviour
     {
         MoveToTile(S_GridManager.Instance.m_GridList[m_currentTile.m_TileX + 1][m_currentTile.m_TileY]);
     }
+    public void MovePlayer(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            Vector2 moveDirection = ctx.ReadValue<Vector2>();
+            switch (moveDirection.x, moveDirection.y) 
+            {
+                case (1,0) :
+                    MoveRight();
+                    break;
+                case (-1,0) :
+                    MoveLeft();
+                    break;
+                case(0,1) :
+                    MoveUp();
+                    break;
+                case (0,-1) :
+                    MoveDown();
+                    break;
+                default:
+                    break;
 
+            }
+
+        }
+    }
+
+    public void PlaceBombAction()
+    {
+        PlaceBomb();
+    }
+    
     public bool PlaceBomb()
     {
         if (!m_currentTile.m_Bomb && m_NbOfBombs > 0 && m_canMove)
