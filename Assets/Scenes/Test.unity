@@ -1679,9 +1679,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1028895116594567582, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1545922806}
-    - targetCorrespondingSourceObject: {fileID: 1028895116594567582, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1545922810}
     - targetCorrespondingSourceObject: {fileID: 3715819298022460259, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
       insertIndex: -1
@@ -2660,22 +2657,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1028895116594567582, guid: ea321ba22602e814fbab4a179f6f77ce, type: 3}
   m_PrefabInstance: {fileID: 756130454}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1545922806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545922800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2767b754e81c876409b43ebed2b2ff04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ListOfBombs: {fileID: 1701116108}
-  m_GridManager: {fileID: 1103327615}
-  m_Character: {fileID: 1545922800}
-  m_Path: []
 --- !u!95 &1545922810
 Animator:
   serializedVersion: 5
