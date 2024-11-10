@@ -38,7 +38,10 @@ public class S_Bomb : MonoBehaviour
             {
                 if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
                 {
-                    m_Character.GainCoin();
+                    if (m_Character.gameObject != null)
+                    {
+                        m_Character.GainCoin();
+                    }
                 }
 
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX + i][m_Tile.m_TileY].ChangeTag("Untagged");
@@ -94,7 +97,10 @@ public class S_Bomb : MonoBehaviour
             {
                 if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
                 {
-                    m_Character.GainCoin();
+                    if (m_Character.gameObject != null)
+                    {
+                        m_Character.GainCoin();
+                    }
                 }
 
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX - i][m_Tile.m_TileY].ChangeTag("Untagged");
@@ -150,7 +156,10 @@ public class S_Bomb : MonoBehaviour
             {
                 if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
                 {
-                    m_Character.GainCoin();
+                    if (m_Character.gameObject != null)
+                    {
+                        m_Character.GainCoin();
+                    }
                 }
 
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY + i].ChangeTag("Untagged");
@@ -206,7 +215,10 @@ public class S_Bomb : MonoBehaviour
             {
                 if (S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].GetComponent<SpriteRenderer>().sprite == S_GridManager.Instance.m_DestructableWallSprite[2])
                 {
-                    m_Character.GainCoin();
+                    if (m_Character.gameObject != null)
+                    {
+                        m_Character.GainCoin();
+                    }
                 }
 
                 S_GridManager.Instance.m_GridList[m_Tile.m_TileX][m_Tile.m_TileY - i].ChangeTag("Untagged");

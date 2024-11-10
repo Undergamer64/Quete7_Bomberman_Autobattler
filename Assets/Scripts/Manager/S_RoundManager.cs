@@ -43,7 +43,7 @@ public class S_RoundManager : MonoBehaviour
             m_rotationHours = m_Timer / m_maxTime;
             m_rotationMinutes = -360 * m_rotationMinutes;
             m_rotationHours = (m_numberOfHour - 30) * m_rotationHours;
-            m_hours.transform.eulerAngles = new Vector3(0, 0, m_rotationHours);
+            m_hours.transform.eulerAngles = new Vector3(0, 0, m_rotationHours+m_numberOfHour);
             m_minutes.transform.eulerAngles = new Vector3(0, 0, m_rotationMinutes);
 
         }

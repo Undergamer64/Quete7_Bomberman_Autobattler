@@ -199,7 +199,9 @@ public class S_Character : MonoBehaviour
 
             if (m_lives <= 0)
             {
+                S_ShopManager.Instance.RemoveCharacter(this);
                 Destroy(gameObject);
+                
             }
             else
             {

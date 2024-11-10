@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class S_ShopManager : MonoBehaviour
@@ -62,15 +63,21 @@ public class S_ShopManager : MonoBehaviour
 
     public void OpenShop() //triggers the animation
     {
-        int nbBomb = S_GridManager.Instance.m_ListOfBombs.transform.childCount;
-        for (int i = nbBomb; i < 0; i--)
+        if(m_listCharacters.Count<=1)
         {
-            Destroy(S_GridManager.Instance.m_ListOfBombs.transform.GetChild(i).gameObject);
+            SceneManager.LoadScene("MainMenu");
         }
         ChooseUpgrade();
         m_shop.SetActive(true);
     }
-
+    public void RemoveCharacter(S_Character character)
+    {
+        if (character == m_character)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        m_listCharacters.Remove(character.gameObject);
+    }
     public void ChooseUpgrade()
     {
         for (int i = 0; i < m_buttons.Count; i++)
@@ -112,6 +119,11 @@ public class S_ShopManager : MonoBehaviour
 
         if (state)
         {
+            foreach (Transform child in S_GridManager.Instance.m_ListOfBombs.transform)
+            {
+                child.GetComponent<S_Bomb>().m_Character.m_NbOfBombs += 1;
+                Destroy(child.gameObject);
+            }
             Time.timeScale = 0;
         }
         else
